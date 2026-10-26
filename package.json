@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/frontend-basics.test.mjs",
     "preview": "vite preview",
     "start": "cd server && npx tsx src/index.ts & npm run dev"
   },
