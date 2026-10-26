@@ -1,3 +1,16 @@
+> **Fork sin cambios propios.** Este repositorio es un fork de
+> [`fspecii/ace-step-ui`](https://github.com/fspecii/ace-step-ui), conservado por Pedro
+> Belentani como referencia de trabajo sobre generación musical local con ACE-Step 1.5.
+> El diseño, el código y la documentación originales son de su autor.
+>
+> El sitio `webdesignstudio.london`, el canal de YouTube y la cuenta de X que aparecen más
+> abajo son **del autor original**, no de este perfil. Por eso el campo *Website* del
+> repositorio se deja sin URL propia: este fork no tiene despliegue.
+>
+> Si quieres usar el proyecto o contribuir, ve al repositorio original.
+
+---
+
 <p align="center">
   <img src="https://img.shields.io/badge/🎵-ACE--Step_UI-ff69b4?style=for-the-badge&labelColor=1a1a1a" alt="ACE-Step UI" height="60">
 </p>
