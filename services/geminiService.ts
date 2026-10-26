@@ -1,60 +1,36 @@
-import { GoogleGenAI, Type } from "@google/genai";
+// A provider key must never be injected into the browser bundle.
+// Song text is generated through the local server, which owns its credential.
+export interface SongData {
+  title: string;
+  lyrics: string;
+  tags: string[];
+}
 
-const apiKey = process.env.API_KEY || ''; // Fallback for dev env without key
-const ai = new GoogleGenAI({ apiKey });
+export async function generateSongData(topic: string, style: string): Promise<SongData> {
+  const response = await fetch('/api/lyrics', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ topic, style }),
+  });
 
-export const generateSongData = async (
-  topic: string, 
-  style: string
-): Promise<{ title: string; lyrics: string; tags: string[] }> => {
-  if (!apiKey) {
-    // Mock response if no API key is present
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          title: "Neon Echoes (Mock)",
-          lyrics: "[Verse]\nChecking for API key...\nNone found, so here is a mock.\n\n[Chorus]\nVirtual sounds in a digital world.",
-          tags: ["electronic", "mock", "ambient"]
-        });
-      }, 2000);
-    });
+  if (!response.ok) {
+    throw new Error(response.status === 503
+      ? 'Lyrics generation is not configured on the local server.'
+      : 'Lyrics could not be generated. Please try again.');
   }
 
-  try {
-    const prompt = `Generate a song title, lyrics, and 3 style tags based on this user prompt: "${topic}". The style requested is: "${style}". 
-    Format the lyrics with standard song structure headers like [Verse], [Chorus].`;
-
-    const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-latest",
-      contents: prompt,
-      config: {
-        responseMimeType: "application/json",
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            title: { type: Type.STRING },
-            lyrics: { type: Type.STRING },
-            tags: { 
-              type: Type.ARRAY,
-              items: { type: Type.STRING }
-            }
-          },
-          required: ["title", "lyrics", "tags"]
-        }
-      }
-    });
-
-    const jsonText = response.text;
-    if (!jsonText) throw new Error("No response from Gemini");
-
-    return JSON.parse(jsonText);
-
-  } catch (error) {
-    console.error("Gemini generation error:", error);
-    return {
-      title: "Generation Failed",
-      lyrics: "[Error]\nCould not generate lyrics at this time.",
-      tags: ["error"]
-    };
+  const data: unknown = await response.json();
+  if (typeof data !== 'object' || data === null) {
+    throw new Error('Invalid lyrics response.');
   }
-};
+  const song = data as Partial<SongData>;
+  if (
+    typeof song.title !== 'string' ||
+    typeof song.lyrics !== 'string' ||
+    !Array.isArray(song.tags) ||
+    !song.tags.every((tag) => typeof tag === 'string')
+  ) {
+    throw new Error('Invalid lyrics response.');
+  }
+  return { title: song.title, lyrics: song.lyrics, tags: song.tags };
+}
