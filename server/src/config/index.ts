@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createSessionSecret } from './sessionSecret.js';
 
 dotenv.config();
 
@@ -41,9 +42,9 @@ export const config = {
     uploadsDir: process.env.DATASETS_UPLOADS_DIR || path.join(__dirname, '../../../ACE-Step-1.5/datasets/uploads'),
   },
 
-  // Simplified JWT (for local session, not critical security)
+  // Local-first JWT: missing or weak secrets are replaced with random ephemeral keys
   jwt: {
-    secret: process.env.JWT_SECRET || 'ace-step-ui-local-secret',
+    secret: createSessionSecret(process.env.JWT_SECRET),
     expiresIn: '365d', // Long-lived for local app
   },
 };

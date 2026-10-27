@@ -4,6 +4,7 @@ import { pool } from '../db/pool.js';
 import { generateUUID } from '../db/sqlite.js';
 import { config } from '../config/index.js';
 import { authMiddleware, AuthenticatedRequest } from '../middleware/auth.js';
+import { requireLocalSessionBootstrap } from '../middleware/localSession.js';
 
 const jwtOptions = { expiresIn: config.jwt.expiresIn } as SignOptions;
 
@@ -18,7 +19,7 @@ function issueAccessToken(payload: { id: string; username: string }): string {
 }
 
 // Auto-login: Get the default user from database (for local single-user app)
-router.get('/auto', async (_req: Request, res: Response) => {
+router.get('/auto', requireLocalSessionBootstrap, async (_req: Request, res: Response) => {
   try {
     // Get the first user from the database (local app typically has one user)
     const result = await pool.query(
@@ -58,7 +59,7 @@ router.get('/auto', async (_req: Request, res: Response) => {
 });
 
 // Setup or get user by username (simplified auth for local app)
-router.post('/setup', async (req: Request<object, object, SetupBody>, res: Response) => {
+router.post('/setup', requireLocalSessionBootstrap, async (req: Request<object, object, SetupBody>, res: Response) => {
   try {
     const { username } = req.body;
 
