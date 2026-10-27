@@ -1,7 +1,7 @@
-> **Fork sin cambios propios.** Este repositorio es un fork de
+> **Fork con parches de seguridad y funcionamiento propios.** Este repositorio es un fork de
 > [`fspecii/ace-step-ui`](https://github.com/fspecii/ace-step-ui), conservado por Pedro
 > Belentani como referencia de trabajo sobre generación musical local con ACE-Step 1.5.
-> El diseño, el código y la documentación originales son de su autor.
+> El diseño, el código y la documentación originales son de su autor; los parches del fork se revisan por separado.
 >
 > El sitio `webdesignstudio.london`, el canal de YouTube y la cuenta de X que aparecen más
 > abajo son **del autor original**, no de este perfil. Por eso el campo *Website* del
@@ -248,6 +248,8 @@ start.bat
 ```
 
 Open **http://localhost:3000** and start creating!
+
+**Seguridad de sesiones locales:** la API escucha en la red, pero `/api/auth/auto` y `/api/auth/setup` solo emiten sesiones desde el propio equipo de forma predeterminada. Para sesiones persistentes configura `JWT_SECRET` con al menos 32 caracteres aleatorios; si falta o es débil, el servidor genera una clave efímera y las sesiones caducan al reiniciar. El acceso LAN sin contraseña puede reactivarse con `ALLOW_LAN_SESSION_BOOTSTRAP=true`, **solo en una red privada de confianza**: cualquier equipo de esa red podrá iniciar sesión como otro usuario. No habilites esta opción en servidores públicos.
 
 ---
 
