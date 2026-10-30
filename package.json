@@ -8,6 +8,7 @@
     "build": "vite build",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/frontend-basics.test.mjs",
+    "export": "node scripts/export.js",
     "preview": "vite preview",
     "start": "cd server && npx tsx src/index.ts & npm run dev"
   },

@@ -8,6 +8,25 @@ export const translations = {
     search: 'Search',
     training: 'Training',
     news: 'News',
+    home: 'Home',
+
+    // Landing page
+    heroBadge: 'AI music generation — 100% local & open source',
+    heroTitle: 'Create music with AI, free and unlimited',
+    heroSubtitle: 'ACE-Step UI turns your own GPU into a music studio: full songs with vocals, custom styles and a complete library. No subscriptions, no cloud — your data stays with you.',
+    heroCta: 'Start creating',
+    heroSecondaryCta: 'Explore library',
+    heroBadgeLocal: 'Runs 100% on your machine',
+    heroBadgeOpenSource: 'Open source (MIT)',
+    heroBadgeFree: 'Unlimited and free',
+    featureGeneration: 'Full song generation',
+    featureGenerationDesc: 'Complete songs with vocals and lyrics, custom styles and fine-grained parameters.',
+    featureLibrary: 'Library and playlists',
+    featureLibraryDesc: 'Organize, search and enjoy your creations in a player-inspired interface.',
+    featureTraining: 'LoRA training',
+    featureTrainingDesc: 'Train your own voice and style models from your datasets.',
+    featureEditor: 'Audio editor and stems',
+    featureEditorDesc: 'Trim, apply effects and separate vocals, drums and bass.',
 
     // Theme
     lightMode: 'Light Mode',
@@ -607,6 +626,25 @@ export const translations = {
     search: '搜索',
     training: '训练',
     news: '新闻',
+    home: '首页',
+
+    // Landing page
+    heroBadge: 'AI 音乐生成 — 100% 本地运行 · 开源',
+    heroTitle: '用 AI 创作音乐，自由且无限',
+    heroSubtitle: 'ACE-Step UI 把你自己的 GPU 变成音乐工作室：带人声的完整歌曲、自定义风格和完整的音乐库。无需订阅，无需云端——数据完全属于你。',
+    heroCta: '开始创作',
+    heroSecondaryCta: '浏览音乐库',
+    heroBadgeLocal: '完全在本地运行',
+    heroBadgeOpenSource: '开源（MIT）',
+    heroBadgeFree: '无限量且免费',
+    featureGeneration: '完整歌曲生成',
+    featureGenerationDesc: '生成带人声和歌词的完整歌曲，支持自定义风格与精细参数。',
+    featureLibrary: '音乐库与播放列表',
+    featureLibraryDesc: '在类播放器界面中整理、搜索和欣赏你的作品。',
+    featureTraining: 'LoRA 训练',
+    featureTrainingDesc: '用你自己的数据集训练专属的声音与风格模型。',
+    featureEditor: '音频编辑与分轨',
+    featureEditorDesc: '剪辑、添加效果，并分离人声、鼓与贝斯。',
 
     // Theme
     lightMode: '浅色模式',
@@ -1206,6 +1244,25 @@ export const translations = {
     search: '検索',
     training: 'トレーニング',
     news: 'ニュース',
+    home: 'ホーム',
+
+    // Landing page
+    heroBadge: 'AI 音楽生成 — 100% ローカル & オープンソース',
+    heroTitle: 'AI で音楽を作ろう、自由で無制限',
+    heroSubtitle: 'ACE-Step UI はあなたの GPU を音楽スタジオに変えます：ボーカル入りの完全な楽曲、カスタムスタイル、充実したライブラリ。サブスクリプション不要、クラウド不要——データはすべてあなたのもの。',
+    heroCta: '作成を始める',
+    heroSecondaryCta: 'ライブラリを見る',
+    heroBadgeLocal: '完全ローカルで動作',
+    heroBadgeOpenSource: 'オープンソース（MIT）',
+    heroBadgeFree: '無制限かつ無料',
+    featureGeneration: '完全な楽曲生成',
+    featureGenerationDesc: 'ボーカルと歌詞入りの完全な楽曲を、カスタムスタイルと詳細なパラメータで生成。',
+    featureLibrary: 'ライブラリとプレイリスト',
+    featureLibraryDesc: 'プレーヤー風インターフェースで作品を整理、検索、楽しめます。',
+    featureTraining: 'LoRA 学習',
+    featureTrainingDesc: '自分のデータセットから専用の声とスタイルのモデルを学習。',
+    featureEditor: 'オーディオ編集とステム分離',
+    featureEditorDesc: 'カットやエフェクト適用、ボーカル・ドラム・ベースの分離。',
 
     // Theme
     lightMode: 'ライトモード',
@@ -1805,6 +1862,25 @@ export const translations = {
     search: '검색',
     training: '훈련',
     news: '뉴스',
+    home: '홈',
+
+    // Landing page
+    heroBadge: 'AI 음악 생성 — 100% 로컬 & 오픈소스',
+    heroTitle: 'AI로 음악을 만드세요, 자유롭고 무제한으로',
+    heroSubtitle: 'ACE-Step UI는 여러분의 GPU를 음악 스튜디오로 바꿔줍니다: 보컬이 포함된 완전한 곡, 커스텀 스타일, 완성도 높은 라이브러리. 구독도 클라우드도 필요 없고 데이터는 모두 여러분의 것입니다.',
+    heroCta: '작업 시작',
+    heroSecondaryCta: '라이브러리 탐색',
+    heroBadgeLocal: '완전 로컬 실행',
+    heroBadgeOpenSource: '오픈소스 (MIT)',
+    heroBadgeFree: '무제한 무료',
+    featureGeneration: '완전한 곡 생성',
+    featureGenerationDesc: '보컬과 가사가 포함된 완전한 곡을 커스텀 스타일과 세밀한 파라미터로 생성합니다.',
+    featureLibrary: '라이브러리와 재생목록',
+    featureLibraryDesc: '플레이어 스타일 인터페이스에서 작품을 정리, 검색하고 감상하세요.',
+    featureTraining: 'LoRA 학습',
+    featureTrainingDesc: '자신의 데이터셋으로 전용 보이스와 스타일 모델을 학습합니다.',
+    featureEditor: '오디오 편집 및 스템 분리',
+    featureEditorDesc: '자르기, 이펙트 적용, 보컬·드럼·베이스 분리.',
 
     // Theme
     lightMode: '라이트 모드',

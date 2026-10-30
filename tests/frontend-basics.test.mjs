@@ -18,3 +18,13 @@ test('the client build does not define server-only environment values', () => {
   assert.match(lyricsService, /fetch\(['"]\/api\/lyrics['"]/);
   assert.doesNotMatch(lyricsService, /process\.env|@google\/genai/);
 });
+
+test('the home landing is wired into the app navigation', () => {
+  const home = readFileSync(new URL('../src/pages/Home.tsx', import.meta.url), 'utf8');
+  const app = readFileSync(new URL('../App.tsx', import.meta.url), 'utf8');
+  const types = readFileSync(new URL('../types.ts', import.meta.url), 'utf8');
+  assert.match(types, /export type View = 'home'/);
+  assert.match(app, /from '\.\/src\/pages\/Home'/);
+  assert.match(app, /useState<View>\('home'\)/);
+  assert.match(home, /heroTitle/);
+});

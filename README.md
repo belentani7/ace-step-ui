@@ -11,6 +11,13 @@
 
 ---
 
+## Utilidad
+
+- **Utilidad social:** ofrece a la comunidad una alternativa libre y 100% local a los servicios de pago de música con IA (Suno/Udio): cualquiera con una GPU puede generar canciones completas con voces en su propio equipo, sin suscripciones, sin nube y con sus datos y su audio bajo su control.
+- **Utilidad comercial:** sirve como base del área de arte y música del ecosistema Belentani para ofrecer generación musical local autoalojada, personalización e integraciones a medida y entrenamiento de modelos LoRA por encargo; la licencia MIT permite derivados comerciales con la procedencia del fork debidamente declarada.
+
+---
+
 <p align="center">
   <img src="https://img.shields.io/badge/🎵-ACE--Step_UI-ff69b4?style=for-the-badge&labelColor=1a1a1a" alt="ACE-Step UI" height="60">
 </p>
@@ -544,6 +551,29 @@ If you need a professional website, ecommerce build, or AI integration for your 
 - **[AudioMass](https://github.com/pkalogiros/AudioMass)** - Web audio editor
 - **[Demucs](https://github.com/facebookresearch/demucs)** - Audio source separation
 - **[Pexels](https://www.pexels.com)** - Stock video backgrounds
+
+---
+
+## 🛠️ Desarrollo
+
+Para trabajar sobre el código en local (frontend Vite + backend Express):
+
+```bash
+npm install        # dependencias del frontend
+cd server && npm install && cd ..
+npm run dev        # arranca el frontend Vite en http://localhost:3000
+```
+
+Otros comandos útiles:
+
+| Comando | Qué hace |
+|---------|----------|
+| `npm run build` | Build de producción del frontend |
+| `npm run typecheck` | Verificación de tipos TypeScript (`tsc --noEmit`) |
+| `npm test` | Tests básicos del frontend (`node --test`) |
+| `node scripts/export.js` | Exporta los datos principales del proyecto a JSON (añade `--out fichero.json` para guardarlo) |
+
+El backend arranca con `cd server && npx tsx src/index.ts` (o usa `start-all.bat` / `start-all.sh`, que levantan todo: ACE-Step + backend + frontend).
 
 ---
 

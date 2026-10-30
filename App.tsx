@@ -23,6 +23,7 @@ import { SearchPage } from './components/SearchPage';
 import { TrainingPanel } from './components/TrainingPanel';
 import { NewsPage } from './components/NewsPage';
 import { ConfirmDialog } from './components/ConfirmDialog';
+import { Home } from './src/pages/Home';
 
 
 function AppContent() {
@@ -46,8 +47,8 @@ function AppContent() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   });
 
-  // Navigation State - default to create view
-  const [currentView, setCurrentView] = useState<View>('create');
+  // Navigation State - default to home landing view
+  const [currentView, setCurrentView] = useState<View>('home');
 
   // Content State
   const [songs, setSongs] = useState<Song[]>([]);
@@ -215,7 +216,7 @@ function AppContent() {
   const handleBackFromProfile = () => {
     setViewingUsername(null);
     setCurrentView('create');
-    window.history.pushState({}, '', '/');
+    window.history.pushState({}, '', '/create');
   };
 
   // Navigate to Song Handler
@@ -229,7 +230,7 @@ function AppContent() {
   const handleBackFromSong = () => {
     setViewingSongId(null);
     setCurrentView('create');
-    window.history.pushState({}, '', '/');
+    window.history.pushState({}, '', '/create');
   };
 
   // Theme Effect
@@ -261,9 +262,11 @@ function AppContent() {
         return;
       }
 
-      if (path === '/create' || path === '/') {
+      if (path === '/create') {
         setCurrentView('create');
         setMobileShowList(false);
+      } else if (path === '/' || path === '/home') {
+        setCurrentView('home');
       } else if (path === '/library') {
         setCurrentView('library');
       } else if (path.startsWith('/@')) {
@@ -1299,6 +1302,28 @@ function AppContent() {
       case 'news':
         return <NewsPage />;
 
+      case 'home':
+        return (
+          <Home
+            onStart={() => {
+              setCurrentView('create');
+              setMobileShowList(false);
+              window.history.pushState({}, '', '/create');
+            }}
+            onNavigate={(v) => {
+              setCurrentView(v);
+              if (v === 'library') {
+                window.history.pushState({}, '', '/library');
+              } else if (v === 'search') {
+                window.history.pushState({}, '', '/search');
+              } else if (v === 'create') {
+                setMobileShowList(false);
+                window.history.pushState({}, '', '/create');
+              }
+            }}
+          />
+        );
+
       case 'create':
       default:
         return (
@@ -1394,9 +1419,11 @@ function AppContent() {
           currentView={currentView}
           onNavigate={(v) => {
             setCurrentView(v);
-            if (v === 'create') {
-              setMobileShowList(false);
+            if (v === 'home') {
               window.history.pushState({}, '', '/');
+            } else if (v === 'create') {
+              setMobileShowList(false);
+              window.history.pushState({}, '', '/create');
             } else if (v === 'library') {
               window.history.pushState({}, '', '/library');
             } else if (v === 'search') {
