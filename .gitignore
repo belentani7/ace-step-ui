@@ -94,3 +94,7 @@ wavacity-editor/
 
 # Script logs
 logs/
+# curacion 2026-11-01
+legacy/
+_stems/
+*.pyc
