@@ -594,3 +594,24 @@ This project is open source under the [MIT License](LICENSE).
 <p align="center">
   <strong>Stop paying for Suno. Start creating with ACE-Step.</strong>
 </p>
+
+
+## Uso
+
+Instala dependencias y ejecuta el proyecto:
+
+```powershell
+# Dependencias
+npm install
+
+# Desarrollo
+npm run dev
+
+# Pruebas
+npm test
+
+# Construcción de producción
+npm run build
+```
+
+Consulta `package.json` para la lista completa de scripts disponibles.
