@@ -4,17 +4,17 @@ Generado 2026-11-03 por el pase de reglas del ecosistema (catálogo `_meta/regla
 Todo lo afirmado aquí sale de datos reales: base de consolidación, gate oficial y git.
 
 - **Categoría:** arte-musica · **Ruta:** `C:\Users\USER\belentani-ecosystem\arte-musica\ace-step-ui`
-- **Remoto:** https://github.com/belentani7/ace-step-ui.git · **Rama:** main · **HEAD:** b7d66b8 (docs(auditoria): estado real del repo, comandos para arreglar/elevar y potencial)
-- **Lenguajes:** .ts:33,.js:32,.tsx:30,.json:9,.html:7,.py:5 · **Commits (git real):** 73 · **Tamaño worktree:** 122.9 MB
+- **Remoto:** https://github.com/belentani7/ace-step-ui.git · **Rama:** main · **HEAD:** d0f1089 (docs(auditoria): estado real del repo, comandos para arreglar/elevar y potencial)
+- **Lenguajes:** .ts:33,.js:32,.tsx:30,.json:9,.html:7,.py:5 · **Commits (git real):** 74 · **Tamaño worktree:** 122.9 MB
 - **Visibilidad GitHub:** public · **Homepage:** (ninguna) · **HTTP:** —
 - **GitHub Pages:** no activo
 
 ## 1. Situación actual
 
 - **Consolidación:** familia `proyecto-acestepui` · acción survivor (estable).
-- **Git:** 3 ficheros sin commitear · 5 commits sin push · 4 commits del pase de reglas (desde 2026-11-02).
+- **Git:** 3 ficheros sin commitear · 6 commits sin push · 5 commits del pase de reglas (desde 2026-11-02).
 - **Reglas web (gate oficial):** 7 HTML · **0 hallazgos** · 0 títulos duplicados.
-- **Gobernanza GitHub (protocolo MS):** 10/11 reglas aplicadas · pendientes: GH-09
+- **Gobernanza GitHub (protocolo MS):** 11/11 reglas aplicadas · completo.
 - **Secretos (triaje):** sin hallazgos.
 
 ## 2. Comandos para arreglar y elevar (ejecutar en este orden)
@@ -23,22 +23,17 @@ Todo lo afirmado aquí sale de datos reales: base de consolidación, gate oficia
    ```powershell
    python C:\Users\USER\belentani-ecosystem\_meta\check_web_rules.py ace-step-ui
    ```
-2. **Gobernanza GitHub pendiente (GH-09):** crear/verificar README, LICENSE, CODE_OF_CONDUCT, CONTRIBUTING, ISSUE_TEMPLATE, PR_TEMPLATE, CI verde, .gitignore, descripción+topics, sin secretos:
-   ```powershell
-   gh api -X PATCH repos/belentani7/ace-step-ui -f description="<descripcion real>" -f homepage="<url viva>"
-   gh repo edit belentani7/ace-step-ui --add-topic <topic1>,<topic2>,<topic3>   # topics reales del proyecto
-   ```
-3. **Publicar en GitHub Pages** (repo público; la cuenta free solo publica repos públicos):
+2. **Publicar en GitHub Pages** (repo público; la cuenta free solo publica repos públicos):
    ```powershell
    gh api -X POST repos/belentani7/ace-step-ui/pages -f source[branch]=main -f source[path]=/
    gh api -X POST repos/belentani7/ace-step-ui/pages/builds/latest -X POST 2>$null   # o dejar que el workflow publique
    ```
-4. **Limpiar 3 ficheros sin commitear** (revisar antes; si son del pase de reglas, commitear):
+3. **Limpiar 3 ficheros sin commitear** (revisar antes; si son del pase de reglas, commitear):
    ```powershell
    git -C "C:\Users\USER\belentani-ecosystem\arte-musica\ace-step-ui" status --short
    git -C "C:\Users\USER\belentani-ecosystem\arte-musica\ace-step-ui" add -- <solo los ficheros del pase> ; git -C "C:\Users\USER\belentani-ecosystem\arte-musica\ace-step-ui" commit -m "fix(web-rules): ..."
    ```
-5. **Subir al remoto** (requiere tu confirmación explícita; hoy ningún repo tiene push):
+4. **Subir al remoto** (requiere tu confirmación explícita; hoy ningún repo tiene push):
    ```powershell
    git -C "C:\Users\USER\belentani-ecosystem\arte-musica\ace-step-ui" push origin main
    ```
