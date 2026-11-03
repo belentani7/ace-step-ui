@@ -4,12 +4,12 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --configLoader runner",
+    "build": "vite build --configLoader runner",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/frontend-basics.test.mjs",
     "export": "node scripts/export.js",
-    "preview": "vite preview",
+    "preview": "vite preview --configLoader runner",
     "start": "cd server && npx tsx src/index.ts & npm run dev"
   },
   "dependencies": {

@@ -1,8 +1,11 @@
-import path from 'path';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig(() => {
+const projectRoot = fileURLToPath(new URL('.', import.meta.url));
+
+export default defineConfig(({ command }) => {
   return {
     server: {
       port: 3000,
@@ -32,11 +35,12 @@ export default defineConfig(() => {
     },
     optimizeDeps: {
       exclude: ['@ffmpeg/ffmpeg', '@ffmpeg/util'],
+      ...(command === 'serve' ? { disabled: true } : {}),
     },
     plugins: [react()],
     resolve: {
       alias: {
-        '@': path.resolve(__dirname, '.'),
+        '@': path.resolve(projectRoot),
       }
     }
   };
