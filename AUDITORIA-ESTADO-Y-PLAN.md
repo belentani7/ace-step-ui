@@ -4,15 +4,15 @@ Generado 2026-11-03 por el pase de reglas del ecosistema (catálogo `_meta/regla
 Todo lo afirmado aquí sale de datos reales: base de consolidación, gate oficial y git.
 
 - **Categoría:** arte-musica · **Ruta:** `C:\Users\USER\belentani-ecosystem\arte-musica\ace-step-ui`
-- **Remoto:** https://github.com/belentani7/ace-step-ui.git · **Rama:** main · **HEAD:** d0f1089 (docs(auditoria): estado real del repo, comandos para arreglar/elevar y potencial)
-- **Lenguajes:** .ts:33,.js:32,.tsx:30,.json:9,.html:7,.py:5 · **Commits (git real):** 74 · **Tamaño worktree:** 122.9 MB
+- **Remoto:** https://github.com/belentani7/ace-step-ui.git · **Rama:** main · **HEAD:** e4d6bc9 (feat(ci): workflow GitHub Pages para la portada (GH-07, fuente Actions))
+- **Lenguajes:** .ts:33,.js:32,.tsx:30,.json:9,.html:7,.py:5 · **Commits (git real):** 76 · **Tamaño worktree:** 122.9 MB
 - **Visibilidad GitHub:** public · **Homepage:** (ninguna) · **HTTP:** —
 - **GitHub Pages:** no activo
 
 ## 1. Situación actual
 
 - **Consolidación:** familia `proyecto-acestepui` · acción survivor (estable).
-- **Git:** 3 ficheros sin commitear · 6 commits sin push · 5 commits del pase de reglas (desde 2026-11-02).
+- **Git:** 3 ficheros sin commitear · 0 commits sin push · 7 commits del pase de reglas (desde 2026-11-02).
 - **Reglas web (gate oficial):** 7 HTML · **0 hallazgos** · 0 títulos duplicados.
 - **Gobernanza GitHub (protocolo MS):** 11/11 reglas aplicadas · completo.
 - **Secretos (triaje):** sin hallazgos.
