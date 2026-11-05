@@ -17,6 +17,7 @@ import json
 import os
 import sys
 
+
 def main():
     parser = argparse.ArgumentParser(description="Preprocess dataset to tensors for LoRA training")
     parser.add_argument("--dataset", required=True, help="Path to dataset JSON file")
@@ -102,7 +103,7 @@ def main():
         if args.json:
             print(json.dumps({
                 "status": "error",
-                "message": f"Model loading failed: {str(e)}. Use Gradio UI preprocess instead.",
+                "message": f"Model loading failed: {e!s}. Use Gradio UI preprocess instead.",
                 "labeled": labeled_count,
                 "total": total_count,
             }))

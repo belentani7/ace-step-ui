@@ -9,6 +9,7 @@ import json
 import os
 import sys
 import time
+
 import torch
 
 # Get ACE-Step path from environment or use default
@@ -18,8 +19,8 @@ ACESTEP_PATH = os.environ.get('ACESTEP_PATH', '/home/ambsd/Desktop/aceui/ACE-Ste
 sys.path.insert(0, ACESTEP_PATH)
 
 from acestep.handler import AceStepHandler
+from acestep.inference import GenerationConfig, GenerationParams, generate_music
 from acestep.llm_inference import LLMHandler
-from acestep.inference import GenerationParams, GenerationConfig, generate_music
 
 # Global handlers (initialized once)
 _handler = None

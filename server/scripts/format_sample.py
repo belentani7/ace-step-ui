@@ -9,15 +9,17 @@ import json
 import os
 import sys
 import time
+
 import torch
 
 # Get ACE-Step path from environment or use default
 ACESTEP_PATH = os.environ.get('ACESTEP_PATH', '/home/ambsd/Desktop/aceui/ACE-Step-1.5')
 sys.path.insert(0, ACESTEP_PATH)
 
-from acestep.llm_inference import LLMHandler
-from acestep.inference import format_sample
 from pathlib import Path
+
+from acestep.inference import format_sample
+from acestep.llm_inference import LLMHandler
 from acestep.model_downloader import download_submodel
 
 # Global handler
