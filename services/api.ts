@@ -108,7 +108,7 @@ export interface Song {
   creator?: string;
   creator_avatar?: string;
   ditModel?: string;
-  generation_params?: any;
+  generation_params?: unknown;
 }
 
 // Transform songs to have proper audio URLs
@@ -147,8 +147,8 @@ export const songsApi = {
     return { song: { ...result.song, audio_url: resolvedUrl, audioUrl: resolvedUrl } };
   },
 
-  getFullSong: async (id: string, token?: string | null): Promise<{ song: Song, comments: any[] }> => {
-    const result = await api(`/api/songs/${id}/full`, { token: token || undefined }) as { song: Song, comments: any[] };
+  getFullSong: async (id: string, token?: string | null): Promise<{ song: Song, comments: unknown[] }> => {
+    const result = await api(`/api/songs/${id}/full`, { token: token || undefined }) as { song: Song, comments: unknown[] };
     const rawUrl = result.song.audio_url || result.song.audioUrl;
     const resolvedUrl = getAudioUrl(rawUrl, result.song.id);
     return { ...result, song: { ...result.song, audio_url: resolvedUrl, audioUrl: resolvedUrl } };
@@ -157,8 +157,8 @@ export const songsApi = {
   createSong: (song: Partial<Song>, token: string): Promise<{ song: Song }> =>
     api('/api/songs', { method: 'POST', body: song, token }),
 
-  updateSong: async (id: string, updates: Partial<Song>, token: string): Promise<{ song: any }> => {
-    const result = await api(`/api/songs/${id}`, { method: 'PATCH', body: updates, token }) as { song: any };
+  updateSong: async (id: string, updates: Partial<Song>, token: string): Promise<{ song: unknown }> => {
+    const result = await api(`/api/songs/${id}`, { method: 'PATCH', body: updates, token }) as { song: unknown };
     const s = result.song;
     const rawUrl = s.audio_url || s.audioUrl;
     const resolvedUrl = getAudioUrl(rawUrl, s.id);
@@ -318,7 +318,7 @@ export interface GenerationJob {
   etaSeconds?: number;
   progress?: number;
   stage?: string;
-  params?: any;
+  params?: unknown;
   created_at?: string;
   result?: {
     audioUrls: string[];
@@ -435,7 +435,7 @@ export const usersApi = {
   getPublicSongs: (username: string): Promise<{ songs: Song[] }> =>
     api(`/api/users/${username}/songs`),
 
-  getPublicPlaylists: (username: string): Promise<{ playlists: any[] }> =>
+  getPublicPlaylists: (username: string): Promise<{ playlists: unknown[] }> =>
     api(`/api/users/${username}/playlists`),
 
   getFeaturedCreators: (): Promise<{ creators: Array<UserProfile & { follower_count?: number }> }> =>
@@ -506,7 +506,7 @@ export const playlistsApi = {
   getMyPlaylists: (token: string): Promise<{ playlists: Playlist[] }> =>
     api('/api/playlists', { token }),
 
-  getPlaylist: (id: string, token?: string | null): Promise<{ playlist: Playlist, songs: any[] }> =>
+  getPlaylist: (id: string, token?: string | null): Promise<{ playlist: Playlist, songs: unknown[] }> =>
     api(`/api/playlists/${id}`, { token: token || undefined }),
 
   getFeaturedPlaylists: (): Promise<{ playlists: Array<Playlist & { creator?: string; creator_avatar?: string }> }> =>

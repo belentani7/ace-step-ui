@@ -155,7 +155,7 @@ interface GenerateBody {
 }
 
 router.post('/upload-audio', authMiddleware, (req: AuthenticatedRequest, res: Response, next: Function) => {
-  audioUpload.single('audio')(req, res, (err: any) => {
+  audioUpload.single('audio')(req, res, (err: unknown) => {
     if (err) {
       res.status(400).json({ error: err.message || 'Invalid file upload' });
       return;
@@ -712,7 +712,7 @@ router.get('/limits', async (_req, res: Response) => {
     const LIMITS_SCRIPT = path.join(SCRIPTS_DIR, 'get_limits.py');
     const pythonPath = resolvePythonPath(ACESTEP_DIR);
 
-    const result = await new Promise<{ success: boolean; data?: any; error?: string }>((resolve) => {
+    const result = await new Promise<{ success: boolean; data?: unknown; error?: string }>((resolve) => {
       const proc = spawn(pythonPath, [LIMITS_SCRIPT], {
         cwd: ACESTEP_DIR,
         env: {
@@ -823,7 +823,7 @@ router.post('/format', authMiddleware, async (req: AuthenticatedRequest, res: Re
         vocal_language: d.vocal_language,
       });
       return;
-    } catch (fetchErr: any) {
+    } catch (fetchErr: unknown) {
       // Only fall back to Python spawn on network errors (service not yet reachable)
       if (fetchErr?.name !== 'AbortError' && (fetchErr?.code === 'ECONNREFUSED' || fetchErr?.cause?.code === 'ECONNREFUSED')) {
         console.warn('[Format] REST API unreachable, falling back to Python spawn');
@@ -856,7 +856,7 @@ router.post('/format', authMiddleware, async (req: AuthenticatedRequest, res: Re
     if (lmBackend) args.push('--lm-backend', lmBackend);
 
     console.log(`[Format] Fallback spawn: ${pythonPath} ${args.join(' ')}`);
-    const result = await new Promise<{ success: boolean; data?: any; error?: string }>((resolve) => {
+    const result = await new Promise<{ success: boolean; data?: unknown; error?: string }>((resolve) => {
       const proc = spawn(pythonPath, args, {
         cwd: ACESTEP_DIR,
         env: { ...process.env, ACESTEP_PATH: ACESTEP_DIR },

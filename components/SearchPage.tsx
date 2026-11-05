@@ -52,7 +52,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
     loadFeaturedContent();
   }, []);
 
-  const transformSong = (s: any): ExtendedSong => ({
+  const transformSong = (s: unknown): ExtendedSong => ({
     ...s,
     id: s.id,
     title: s.title,
@@ -98,7 +98,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
         setFeaturedCreators(creatorsRes.value.creators.slice(0, MAX_RESULTS));
       } else if (songsRes.status === 'fulfilled' && songsRes.value.songs?.length > 0) {
         const uniqueCreators = new Map<string, UserProfile & { song_count?: number }>();
-        songsRes.value.songs.forEach((song: any) => {
+        songsRes.value.songs.forEach((song: unknown) => {
           if (song.creator && !uniqueCreators.has(song.creator)) {
             uniqueCreators.set(song.creator, {
               id: song.user_id || song.userId || song.creator,

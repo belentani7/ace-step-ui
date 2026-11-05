@@ -555,7 +555,7 @@ async function processGenerationViaGradio(
 
   if (Array.isArray(allFiles) && allFiles.length > 0) {
     audioFileObjects = allFiles.filter(
-      (f: any) => f && (f.path || f.url) && isAudioFile(f.orig_name || f.path || '')
+      (f: unknown) => f && (f.path || f.url) && isAudioFile(f.orig_name || f.path || '')
     );
   }
 

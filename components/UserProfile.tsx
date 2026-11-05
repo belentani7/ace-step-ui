@@ -571,7 +571,7 @@ export const UserProfile: React.FC<UserProfileProps> = ({ username, onBack, onPl
                             </button>
                         </div>
                         <div className="flex gap-3 md:gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-700 scrollbar-track-transparent -mx-4 px-4 md:mx-0 md:px-0">
-                            {publicPlaylists.map((playlist: any) => (
+                            {publicPlaylists.map((playlist: unknown) => (
                                 <div
                                     key={playlist.id}
                                     onClick={() => onNavigateToPlaylist?.(playlist.id)}

@@ -10,7 +10,7 @@ export interface Song {
   queuePosition?: number; // Position in queue (undefined = actively generating, number = waiting in queue)
   progress?: number;
   stage?: string;
-  generationParams?: any;
+  generationParams?: unknown;
   tags: string[];
   audioUrl?: string;
   isPublic?: boolean;
@@ -35,7 +35,7 @@ export interface Playlist {
   creator?: string;
   created_at?: string;
   song_count?: number;
-  songs?: any[];
+  songs?: unknown[];
 }
 
 export interface Comment {

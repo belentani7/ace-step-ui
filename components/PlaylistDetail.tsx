@@ -30,7 +30,7 @@ export const PlaylistDetail: React.FC<PlaylistDetailProps> = ({ playlistId, onBa
             // res.playlist comes from DB row, which now includes creator_avatar
             setPlaylist(res.playlist as any);
 
-            const mappedSongs: Song[] = res.songs.map((s: any) => ({
+            const mappedSongs: Song[] = res.songs.map((s: unknown) => ({
                 id: s.id,
                 title: s.title,
                 lyrics: s.lyrics,

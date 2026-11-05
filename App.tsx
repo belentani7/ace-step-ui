@@ -311,7 +311,7 @@ function AppContent() {
           songsApi.getLikedSongs(token)
         ]);
 
-        const mapSong = (s: any): Song => ({
+        const mapSong = (s: unknown): Song => ({
           id: s.id,
           title: s.title,
           lyrics: s.lyrics,
@@ -881,7 +881,7 @@ function AppContent() {
         const jobs = Array.isArray(history.jobs) ? history.jobs : [];
 
         const activeStatuses = new Set(['pending', 'queued', 'running']);
-        const jobsToResume = jobs.filter((job: any) => activeStatuses.has(job.status));
+        const jobsToResume = jobs.filter((job: unknown) => activeStatuses.has(job.status));
 
         if (jobsToResume.length === 0) return;
 

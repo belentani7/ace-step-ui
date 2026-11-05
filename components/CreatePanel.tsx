@@ -563,7 +563,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
         if (models.length > 0) {
           setFetchedModels(models);
           // Always sync to the backend's active model
-          const active = models.find((m: any) => m.is_active);
+          const active = models.find((m: unknown) => m.is_active);
           if (active) {
             setSelectedModel(active.name);
             localStorage.setItem('ace-model', active.name);

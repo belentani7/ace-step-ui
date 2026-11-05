@@ -41,7 +41,7 @@ function sanitizeParams(params?: unknown[]): unknown[] | undefined {
 
 // Query result type - use 'any' for rows to avoid strict typing issues
 interface QueryResult {
-  rows: any[];
+  rows: unknown[];
   rowCount: number;
 }
 
