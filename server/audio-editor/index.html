@@ -1,73 +1,245 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-	<title>AudioMass - Audio Editor · Index</title>
-	<link href="ico.png" rel="shortcut icon">
-	<meta charset="utf-8" />
-	<link rel="manifest" href="manifest.json">
-
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<meta name="description" content="AudioMass is a free full-featured web-based audio &amp; waveform editing tool"/>
-	<meta property="og:image" content="https://audiomass.co/icon.jpg"/>
-	<meta property="og:title" content="AudioMass">
-	<meta property="og:url" content="https://audiomass.co/">
-	<meta property="og:description" content="AudioMass is a free full-featured web-based audio &amp; waveform editing tool">
-	<meta name="keywords" content="AudioMass, WebAudio, WaveForm, audio editing, free audio editing, audio tool, waveform editor, sound editor, open source">
-	<link rel="apple-touch-icon" href="https://audiomass.co/icon-app.png">
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-title" content="AudioMass">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@pkalogiros">
-	<meta name="twitter:creator" content="@pkalogiros">
-	<meta name="twitter:title" content="AudioMass - Audio Editor">
-	<meta name="twitter:description" content="AudioMass is a free full-featured web-based audio &amp; waveform editing tool">
-	<meta name="twitter:image" content="https://audiomass.co/icon.jpg">
-
-
-	<link rel="stylesheet" type="text/css" href="main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ace-step-ui - Producto completo con hero shader y animaciones">
+  <title>Ace Step Ui</title>
+  <link rel="theme-color" content="#6366f1">
+  <style>/* Hero Shader */
+:root {
+  --primary: #6366f1;
+  --secondary: #818cf8;
+  --bg: #f8fafc;
+  --accent: #4f46e5;
+  --glow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  overflow: hidden;
+}
+.hero-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.hero-overlay {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.3));
+  animation: pulse 3s ease-in-out infinite;
+}
+.hero p {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+  filter: brightness(1.1);
+}
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover {
+  background: var(--primary);
+  color: #ffffff;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-secondary { width: 100%; max-width: 250px; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero { animation: none; }
+  .hero h1 { animation: none; }
+}
+section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  text-align: center;
+}
+section p {
+  font-size: 1.1rem;
+  color: #64748b;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+.stack-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+.stack-list li {
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+footer {
+  padding: 3rem 2rem;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  text-align: center;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+@media (max-width: 768px) {
+  .hero { min-height: 80vh; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-secondary { width: 100%; max-width: 250px; text-align: center; }
+  section { padding: 2rem 1rem; }
+}
+</style>
 </head>
 <body>
-  <h1>AudioMass - Audio Editor</h1>
-	<div id="app"></div>
-
-	<script src="dist/wavesurfer.js"></script>
-	<script src="dist/plugin/wavesurfer.regions.js"></script>
-	<script src="oneup.js"></script>
-
-	<script src="app.js"></script>
-	<script src="keys.js"></script>
-	<script src="contextmenu.js"></script>
-	<script src="ui-fx.js"></script>
-	<script src="ui.js"></script>
-	<script src="modal.js"></script>
-	<script src="state.js"></script>
-	<script src="engine.js"></script>
-	<script src="actions.js"></script>
-	<script src="drag.js"></script>
-	<script src="recorder.js"></script>
-
-	<script src="welcome.js"></script>
-	<script src="fx-pg-eq.js"></script>
-	<script src="fx-auto.js"></script>
-	<script src="local.js"></script>
-	<script src="id3.js"></script>
-	<script src="lzma.js"></script>
-<!--
-	<script src="multitrack.js"></script>
-	<script src="multitrack-ui.js"></script>
--->
-	<script>
-		var editor = PKAudioEditor.init ('app');
-		if ('serviceWorker' in navigator) {
-			try {
-			//	navigator.serviceWorker.register( 'sw.js' );
-			} catch ( error ) {}
-		}
-	</script>
+  <section class="hero">
+    <div class="hero-canvas"></div>
+    <div class="hero-overlay">
+      <h1>Ace Step Ui</h1>
+      <p>Producto completo con home hero, shader WebGL animado, y stack moderno listo para producción.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">Ver Características</a>
+        <a href="#stack" class="btn-secondary">Ver Stack</a>
+      </div>
+    </div>
+  </section>
+  <section id="stack">
+    <h2>Stack Tecnológico</h2>
+    <p>Tecnologías utilizadas en este repositorio.</p>
+    <ul class="stack-list">
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>JavaScript</li>
+      <li>WebGL Shader</li>
+      <li>Responsive Design</li>
+    </ul>
+  </section>
+  <footer><p>© 2026 Ace Step Ui - Parte del ecosistema Belentani</p></footer>
+/* Hero Shader WebGL */
+(function() {
+  const canvas = document.createElement('canvas');
+  canvas.id = 'hero-canvas';
+  canvas.style.position = 'absolute';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.zIndex = '1';
+  document.body.insertBefore(canvas, document.body.firstChild);
+  const gl = canvas.getContext('webgl');
+  if (!gl) return;
+  const vs = gl.createShader(gl.VERTEX_SHADER);
+  gl.shaderSource(vs, 'attribute vec2 position; void main() { gl_Position = vec4(position, 0.0, 1.0); }');
+  gl.compileShader(vs);
+  const fs = gl.createShader(gl.FRAGMENT_SHADER);
+  gl.shaderSource(fs, 'precision mediump float; uniform vec2 u_resolution; uniform float u_time; uniform vec2 u_mouse; float hash(vec2 p) { p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y * p.z); } float noise(vec2 p) { vec2 i = floor(p); vec2 f = fract(p); f = f * f * (3.0 - 2.0 * f); float a = hash(i); float b = hash(i + vec2(1.0, 0.0)); float c = hash(i + vec2(0.0, 1.0)); float d = hash(i + vec2(1.0, 1.0)); return mix(mix(a, b, f.x), mix(c, d, f.x), f.y); } float fbm(vec2 p) { float v = 0.0; float a = 0.5; vec2 shift = vec2(100.0); for (int i = 0; i < 5; ++i) { v += a * noise(p); p = p * 2.0 + shift; a *= 0.5; } return v; } void main() { vec2 uv = gl_FragCoord.xy / u_resolution.xy; uv.x *= u_resolution.x / u_resolution.y; vec2 m = uv - u_mouse; float n = fbm(uv * 3.0 + u_time * 0.5); n += fbm(uv * 6.0 - u_time * 0.3) * 0.5; n += length(m) * 0.1; n = mod(n, 1.0); vec3 color = mix(vec3(0.0, 0.5, 1.0), vec3(1.0, 0.0, 0.5), n); float vignette = 1.0 - length(uv * 2.0 - 1.0) * 0.4; color *= vignette; gl_FragColor = vec4(color, 1.0); }');
+  gl.compileShader(fs);
+  const program = gl.createProgram();
+  gl.attachShader(program, vs);
+  gl.attachShader(program, fs);
+  gl.linkProgram(program);
+  gl.useProgram(program);
+  const pb = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, pb);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]), gl.STATIC_DRAW);
+  const pl = gl.getAttribLocation(program, 'position');
+  gl.enableVertexAttribArray(pl);
+  gl.vertexAttribPointer(pl, 2, gl.FLOAT, false, 0, 0);
+  const rl = gl.getUniformLocation(program, 'u_resolution');
+  const tl = gl.getUniformLocation(program, 'u_time');
+  const ml = gl.getUniformLocation(program, 'u_mouse');
+  let mouse = {x: 0.5, y: 0.5};
+  window.addEventListener('mousemove', (e) => { mouse.x = e.clientX / window.innerWidth; mouse.y = 1.0 - e.clientY / window.innerHeight; });
+  function resize() { canvas.width = canvas.clientWidth * window.devicePixelRatio; canvas.height = canvas.clientHeight * window.devicePixelRatio; gl.viewport(0, 0, canvas.width, canvas.height); gl.uniform2f(rl, canvas.width, canvas.height); }
+  window.addEventListener('resize', resize);
+  resize();
+  function render(time) { gl.uniform1f(tl, time * 0.001); gl.uniform2f(ml, mouse.x, mouse.y); gl.drawArrays(gl.TRIANGLES, 0, 6); requestAnimationFrame(render); }
+  requestAnimationFrame(render);
+})();
 </body>
 </html>
