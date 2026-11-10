@@ -106,7 +106,7 @@ router.get('/', authMiddleware, async (req: AuthenticatedRequest, res: Response)
   try {
     const result = await pool.query(
       `SELECT s.id, s.title, s.lyrics, s.style, s.caption, s.cover_url, s.audio_url,
-              s.duration, s.bpm, s.key_scale, s.time_signature, s.tags, s.is_public, 
+              s.duration, s.bpm, s.key_scale, s.time_signature, s.tags, s.is_public,
               s.like_count, s.view_count, s.user_id, s.created_at, s.generation_params,
               COALESCE(u.username, 'Anonymous') as creator
        FROM songs s

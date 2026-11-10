@@ -1,5 +1,5 @@
 (function ( w, d ) {
-	
+
 	var _id = 0;
 
 	function PKSimpleModal ( config ) {
@@ -25,7 +25,7 @@
 		var el_cont = d.createElement ('div');
 		el_cont.className = 'pk_modal_cnt';
 		this.el_cont = el_cont;
-		
+
 		// title
 		var el_title = d.createElement ('div');
 		el_title.className = 'pk_noselect pk_modal_title';
@@ -50,7 +50,7 @@
 			q.Destroy ();
 		};
 		el_bottom.appendChild ( a_cancel );
-		
+
 		// check if we need to construct more buttons from the config...
 		if (config.buttons && config.buttons.length > 0)
 		{
@@ -62,7 +62,7 @@
 				var a_bottom = d.createElement ('a');
 				a_bottom.innerHTML = curr.title;
 				a_bottom.className = 'pk_modal_a_bottom ' + (curr.clss ? curr.clss : '');
-				
+
 				if (curr.callback)
 				{
 					(function ( callback ) {
@@ -106,7 +106,7 @@
 		if (config.onpreset) this.onpreset = config.onpreset;
 		if (config.setup) config.setup ( this );
 	};
-	
+
 	PKSimpleModal.prototype.Show = function () {
 
 		this.el_back.appendChild ( this.el_cont );
@@ -127,8 +127,8 @@
 		d.body.removeChild ( this.el_back );
 	};
 
-	
-	// Extended modal 
+
+	// Extended modal
 	function PKAudioFXModal ( config, app ) {
 		var toolbar = null;
 
@@ -173,7 +173,7 @@
 				// if preview remove callback
 				app.ui.KeyHandler.removeCallback ('ksp' + q.id);
 
-				
+
 				config.ondestroy && config.ondestroy ( q );
 			},
 			toolbar: toolbar,
@@ -206,13 +206,13 @@
 			  };
 			  q._evstop = function () {
 				  q.els.toolbar[0].classList.add ('pk_inact');
-				  q.els.toolbar[1].classList.remove ('pk_act');										  
+				  q.els.toolbar[1].classList.remove ('pk_act');
 			  }
 
 			  q._evtoggle = function ( val ) {
 				  var el = q.els.toolbar[0];
 				  if (val) el.innerHTML = 'ON';
-				  else el.innerHTML = 'OFF';									
+				  else el.innerHTML = 'OFF';
 			  };
 
 			  var stopped_listening = false;
@@ -278,7 +278,7 @@
 			  	  }
 
 				  var d = document;
-				  var sel_presets = q.el.getElementsByClassName ('pk_sel'); 
+				  var sel_presets = q.el.getElementsByClassName ('pk_sel');
 
 				  // if presets exist remove them
 				  if (sel_presets.length > 0)
@@ -329,7 +329,7 @@
 				  for (var i = -1; i < presets.length; ++i)
 				  {
 					var opt = d.createElement ('option');
-					
+
 					if (i === -1)
 					{
 						opt.value = 'null';
@@ -343,7 +343,7 @@
 					}
 					sel_presets.appendChild( opt );
 				  }
-				  
+
 				  sel_presets.onchange = function () {
 					  var val_arr = this.value.split(',');
 					  var els = q.el.getElementsByTagName('input');
@@ -357,15 +357,15 @@
 					  }
 
 					  var len = els.length;
-					  
+
 					  for (var i = 0; i < len; ++i) {
 						  if (!val_arr[ i ]) break;
 
 						  var curr_val = val_arr[ i ].trim ();
 						  var curr_input = els[ i ];
-						  
+
 						  if (curr_val === 'null') continue;
-						  
+
 						  if (curr_input.type === 'checkbox' || curr_input.type === 'radio')
 							curr_input.checked = curr_val;
 						  else
@@ -400,7 +400,7 @@
 			  app.fireEvent ('DidOpenFX_UI', q);
 
 			  if (config.updateFilter) q.updateFilter = config.updateFilter;
-			  
+
 			  if (config.presets)
 			  {
 			  	q._updatePresets (null, config.presets);
@@ -412,10 +412,10 @@
 			  config.setup && config.setup ( q );
 			}
 		});
-	
+
 		return (inner_modal);
 	};
-	
+
 	w.PKSimpleModal = PKSimpleModal;
 	w.PKAudioFXModal = PKAudioFXModal;
 })( window, document );

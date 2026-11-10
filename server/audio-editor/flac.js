@@ -20,7 +20,7 @@ function convert(n) {
 
 function initFLAC() {
     if (FLAC_INITIALIZED) return true;
-    
+
     //                                        SAMPLERATE, CHANNELS, BPS, COMPRESSION, 0, VERIFY, BLOCK_SIZE);
     flacEncoder = Flac.create_libflac_encoder(sample_rate, channels, 16, compression, 0, true, 0);
     if (flacEncoder != 0) {
@@ -28,11 +28,11 @@ function initFLAC() {
             buffers.push(new Uint8Array(buffer));
             bufIndex += buffer.byteLength;
         });
-        
+
         FLAC_INITIALIZED = true;
         return status == 0;
     }
-    
+
     return false;
 }
 
@@ -58,7 +58,7 @@ onmessage = function(ev) {
         sample_rate = ev.data.sample_rate / 1;
         compression = ev.data.flac_compression;
         channels = ev.data.channels / 1;
-        
+
         initFLAC();
         return;
     }
@@ -85,7 +85,7 @@ onmessage = function(ev) {
     // Process the audio data
     var interleaved = null;
     var samples = null;
-    
+
     if (channels > 1) {
         // Create interleaved buffer for stereo
         interleaved = interleave(samples_left, samples_right);
@@ -107,7 +107,7 @@ onmessage = function(ev) {
         }
         Flac.FLAC__stream_encoder_process(flacEncoder, [tmp_samples], samples_left.length);
     }
-    
+
     // Finish encoding
     Flac.FLAC__stream_encoder_finish(flacEncoder);
 
@@ -118,11 +118,11 @@ onmessage = function(ev) {
         outputData.set(buffers[i], offset);
         offset += buffers[i].length;
     }
-    
+
     // Create blob and return
     var blob = new Blob([outputData], {type: 'audio/flac'});
     postMessage(blob);
-    
+
     // Clean up
     Flac.FLAC__stream_encoder_delete(flacEncoder);
     FLAC_INITIALIZED = false;

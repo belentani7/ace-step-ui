@@ -1,5 +1,5 @@
 (function ( w, d ) {
-	
+
 	function OneUp ( _text, _time, _clss ) {
 		var el = d.createElement ('div');
 		var cl = 'pk_oneup pk_noselect';
@@ -13,10 +13,10 @@
 		d.body.appendChild ( el );
 		setTimeout (function() {
 			el.style.cssText = 'margin-top:0px;opacity:1';
-			
+
 			setTimeout (function() {
 				el.style.cssText = 'margin-top:-20px;opacity:0';
-				
+
 				setTimeout (function() {
 					el.parentNode.removeChild ( el );
 					el = null;

@@ -73,7 +73,7 @@
 
 			while (l-- > 0) {
 				if (q.ranges[l] === range) {
-					q.ranges.splice (l, 1); 
+					q.ranges.splice (l, 1);
 					break;
 				}
 			}
@@ -137,7 +137,7 @@
 			var barHeight = 0;
 			var x = 0;
 
-			// 
+			//
 			for (var i = 0; i < 117; ++i)
 			{
 				barHeight = freq[i];
@@ -345,7 +345,7 @@
 
 					if (curr._on)
 						ctx.fillStyle = '#fff';
-					else 
+					else
 						ctx.fillStyle = '#686868';
 
 					ctx.stroke ();
@@ -358,7 +358,7 @@
 
 					if (curr._on)
 						ctx.fillStyle = 'blue';
-					else 
+					else
 						ctx.fillStyle = 'darkblue';
 
 					ctx.stroke ();
@@ -622,12 +622,12 @@
 			'<span style="top:10%">28<span></span></span>' +
 			'<span style="top:20%">21<span></span></span>' +
 			'<span style="top:30%">14<span></span></span>' +
-			'<span style="top:40%">7<span></span></span>' +			
+			'<span style="top:40%">7<span></span></span>' +
 			'<span>0<span></span></span>' +
 			'<span style="top:60%">-7<span></span></span>' +
 			'<span style="top:70%">-14<span></span></span>' +
 			'<span style="top:80%">-21<span></span></span>' +
-			'<span style="top:90%">-28<span></span></span>' +			
+			'<span style="top:90%">-28<span></span></span>' +
 			'<span style="top:100%">35</span>';
 
 			el_drawer.appendChild ( canvas_bars );
@@ -770,7 +770,7 @@
 								e.ev.stopPropagation ();
 
 								canvas.addEventListener ('touchmove', _move, false);
-								canvas.addEventListener ('touchup', _end, false);	
+								canvas.addEventListener ('touchup', _end, false);
 							}
 
 							return ;
@@ -894,7 +894,7 @@
 			var num = '<i>' + range.id + '</i>';
 			var el_num = d.createElement ('div');
 			el_num.className = 'pk_txlft';
-			el_num.innerHTML = num + 
+			el_num.innerHTML = num +
 				'<input type="checkbox" id="pgon' + range.id + '" class="pk_check" name="onoff" ' + chckd +'>' +
 				'<label for="pgon' + range.id + '">ON</label>';
 
@@ -1112,7 +1112,7 @@
 
 			var val = [];
 			var ranges = PGEQ.ranges;
-			  
+
 			for (var i = 0; i < ranges.length; ++i)
 			{
 				var range = ranges [ i ];
@@ -1146,7 +1146,7 @@
 			},
 
 			body: '',
-			
+
 			presets:[
 					{name:'Old Telephone',val:'1,highpass,0,5800,5.8,1,lowpass,0,7060,5'}
 			],
@@ -1521,7 +1521,7 @@
 
 					'<div class="pk_row">'+
 			    	'<input type="checkbox" id="xxcjgs" class="pk_check" checked name="metroAccent">'+
-					'<label for="xxcjgs">Accentuate metronome click</label></div>' + 
+					'<label for="xxcjgs">Accentuate metronome click</label></div>' +
 
 					'<div class="pk_row">'+
 					'<a class="pk_modal_a_bottom" style="display:inline-block;float:none">Metronome</a>'+
@@ -1723,7 +1723,7 @@
 				el_drawer.className = 'pk_row';
 
 				// Estimate tempo for selected area button
-				el_drawer.innerHTML = '<div class="pk_row pk_pgeq_els">' + 
+				el_drawer.innerHTML = '<div class="pk_row pk_pgeq_els">' +
 					'<span>Average BPM</span>'+
 					'<input style="margin-left:2px;min-width:64px;max-width:64px" '+
 					'type="text" class="pk_val pk_gain" value="-">'+
@@ -2053,7 +2053,7 @@
 
 				};
 
-				q.app.listenFor ('DidAudioProcess', DidAudioProcess); 
+				q.app.listenFor ('DidAudioProcess', DidAudioProcess);
 
 				if (PKAudioEditor.engine.wavesurfer.regions.list[0])
 				{
@@ -2153,7 +2153,7 @@
 
 				app.ui.KeyHandler.addCallback ('tmpTap', function ( e, o, ev ) {
 					if (!app.ui.InteractionHandler.check (modal_name)) return ;
-					
+
 					ev.preventDefault ();
 					ev.stopPropagation ();
 
@@ -2203,7 +2203,7 @@
 				var duration_rate = ending_time * sample_rate;
 				var dist_rhythm   = {};
 
-				// now run offline 
+				// now run offline
 				var audio_ctx = getOfflineAudioContext (
 						1,
 						buffer.sampleRate,
@@ -2380,14 +2380,14 @@
                     	dist_rhythm[ k ] += distances[ k ];
                     }
 
-                     
+
                     console.log ( distances );
                     // console.log( ' ---------------- ' );
                     // console.log ('--------- END OF PASS -------  ',  offset, ' / ', duration);
 
                     if (next_offset + look_ahead >= duration) {
 
-                    	 // Done... 
+                    	 // Done...
                     	 console.log ( dist_rhythm );
                     } else {
                    // 	_pass ( rendered_buffer, next_offset, duration );
@@ -2396,7 +2396,7 @@
 				};
 
 
-				var offline_renderer = audio_ctx.startRendering(); 
+				var offline_renderer = audio_ctx.startRendering();
 				if (offline_renderer)
 					offline_renderer.then( offline_callback ).catch(function(err) {
 						console.log('Rendering failed: ' + err);
@@ -2412,12 +2412,12 @@
 				el_drawer.className = 'pk_row';
 
 				// Estimate tempo for selected area button
-				el_drawer.innerHTML = '<div class="pk_row">' + 
+				el_drawer.innerHTML = '<div class="pk_row">' +
 				'<input type="radio" class="pk_check" id="tt4" name="xport" checked value="whole">'+
 				'<label for="tt4">Whole track</label>'+
 				'<input type="radio" class="pk_check" id="tt5" name="xport" value="sel">'+
 				'<label class="pk_lblmp3" for="tt5">Estimate for Selection Only</label></div>' +
-				'<div class="pk_row">' + 
+				'<div class="pk_row">' +
 				'<a class="pk_modal_a_bottom" style="margin:0;float:left">Estimate</a>'+
 				'</div>';
 

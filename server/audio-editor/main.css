@@ -429,7 +429,7 @@ a{cursor:pointer;color:#4f46e5;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 	margin:0 auto;
 	contain: content;
 	/*height:calc(100% - 168px);*/
-	
+
 	background:#09090b;
 	position:relative;
 	overflow:hidden;
@@ -928,7 +928,7 @@ a{cursor:pointer;color:#4f46e5;-webkit-tap-highlight-color:rgba(0,0,0,0)}
 	left:0;
 	top:0;
 
-	
+
 	overflow:auto;
 	right:0;
 
@@ -1164,7 +1164,7 @@ a{cursor:pointer;color:#4f46e5;-webkit-tap-highlight-color:rgba(0,0,0,0)}
     overflow: hidden;
     padding-top: 6px;
     margin-bottom: 4px;
-    padding-bottom: 12px;	
+    padding-bottom: 12px;
 }
 .pk_row:last-child{
 	border:none;
@@ -1337,7 +1337,7 @@ input.pk_horiz.pk_w180{
   border-radius: 12px;
   background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #47497d), color-stop(100%, #519fa7)); /* android <= 2.2 */
   background-image: -webkit-linear-gradient(top , #47497d 0, #519fa7 100%); /* older mobile safari and android > 2.2 */;
-  background-image: linear-gradient(to bottom, #47497d 0, #519fa7 100%); 
+  background-image: linear-gradient(to bottom, #47497d 0, #519fa7 100%);
 }
 .pk_vert::-moz-range-thumb,
 .pk_horiz::-moz-range-thumb {
@@ -1504,7 +1504,7 @@ input.pk_horiz.pk_w180{
 	.pk_selection .pk_sellist {
 		width: 296px;
 	}
-	
+
 	.pk_tb .pk_selection .pk_btn{
 		width: 60px;
 		line-height: 10px;
@@ -1718,7 +1718,7 @@ input.pk_horiz.pk_w180{
 .pk_peq4{
 	font-size:9px;
 	color:#666;
-	position:absolute;	
+	position:absolute;
     left: 0;
     top: 0;
     height: 225px;
@@ -1875,10 +1875,10 @@ label.pk_dis,
   width: 0px;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 body.pk_stndln{

@@ -26,7 +26,7 @@
 			}
 		},
 		/**
-		*	Go through every children element of the context el, 
+		*	Go through every children element of the context el,
 		*	and remove all listeners and added attributes, then remove it
 		*	from the dom also
 		**/
@@ -48,7 +48,7 @@
 
 			closeContext(null);
 			activeMenu.push( e );
-			
+
 			//go through all the options and make the div
 			var div = doc.createElement('div'),
 			a,
@@ -76,7 +76,7 @@
 					a.callback = opts[ i ].callback;
 
 					a.addEventListener( 'click', a.callback, false );
-					
+
 					div.appendChild( a );
 				}
 			}
@@ -114,7 +114,7 @@
 			e = {pageX:0, pageY:0};
 		}
 
-		// ---- 
+		// ----
 		var instance = getInstance ( this );
 		var pageX = e.pageX || e.clientX + doc.documentElement.scrollLeft;
 		var pageY = e.pageY || e.clientY + doc.documentElement.scrollTop;
@@ -195,7 +195,7 @@
 	};
 
 
-	// todo touch controls too? #### 
+	// todo touch controls too? ####
 	doc.addEventListener( closeEvent[0], closeContext, false );
 	doc.addEventListener( 'killCTX', closeContext, false );
 

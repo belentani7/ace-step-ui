@@ -118,7 +118,7 @@
 
 			app.fireEvent('RequestPause');
 
-			// mark the region as 
+			// mark the region as
 			region.element.style.background = 'red';
 
 			var reg = {
@@ -199,7 +199,7 @@
 					}
 				}
 			  ],
-			  body:'<div class="pk_row" style="border:none"><label>Gain percentage</label>' + 
+			  body:'<div class="pk_row" style="border:none"><label>Gain percentage</label>' +
 				'<input type="range" class="pk_horiz" min="0.0" max="2.5" step="0.01" value="1.0" />'+
 				'<span class="pk_val">100%</span></div>' +
 				'<div class="pk_row" style="border:none;padding:0">',
@@ -271,7 +271,7 @@
 					}
 				}
 			  ],
-			  body:'<div class="pk_row" style="border:none"><label>Playback Rate</label>' + 
+			  body:'<div class="pk_row" style="border:none"><label>Playback Rate</label>' +
 				'<input type="range" class="pk_horiz" min="0.2" max="2.0" step="0.05" value="1.0" />'+
 				'<span class="pk_val">1.0</span></div>',
 			  setup:function( q ) {
@@ -282,10 +282,10 @@
 					span.innerHTML = range.value;
 					app.fireEvent ('RequestActionFX_UPDATE_PREVIEW', range.value/1);
 				  };
-				  
+
 				  app.fireEvent ('RequestPause');
 				  app.ui.InteractionHandler.checkAndSet (modal_name);
-				   
+
 				  app.ui.KeyHandler.addCallback (modal_esc_key, function ( e ) {
 				  	if (!app.ui.InteractionHandler.check (modal_name)) return ;
 
@@ -338,7 +338,7 @@
 					}
 				}
 			  ],
-			  body:'<div class="pk_row" style="border:none"><label>Playback Rate</label>' + 
+			  body:'<div class="pk_row" style="border:none"><label>Playback Rate</label>' +
 				'<input type="range" class="pk_horiz" min="0.2" max="2.0" step="0.05" value="1.0" />'+
 				'<span class="pk_val">1.0</span></div>',
 			  setup:function( q ) {
@@ -349,10 +349,10 @@
 					span.innerHTML = range.value;
 					app.fireEvent ('RequestActionFX_UPDATE_PREVIEW', range.value/1);
 				  };
-				  
+
 				  app.fireEvent ('RequestPause');
 				  app.ui.InteractionHandler.checkAndSet (modal_name);
-				   
+
 				  app.ui.KeyHandler.addCallback (modal_esc_key, function ( e ) {
 				  	if (!app.ui.InteractionHandler.check (modal_name)) return ;
 
@@ -424,21 +424,21 @@
 
 					'<div class="pk_row">'+
 					'<input type="checkbox" class="pk_check pk_c_mm" id="xmm" name="makeMono">'+
-					'<label for="xmm">Make Mono</label></div>' + 
+					'<label for="xmm">Make Mono</label></div>' +
 			  		'<div class="pk_row" style="padding-left:30px">' +
 					'<input type="radio" class="pk_check pk_c_c" id="kf6" name="chnl" value="left">'+
 					'<label class="pk_dis" for="kf6">Left Channel</label>'+
 					'<input type="radio" class="pk_check pk_c_c" id="kf7" name="chnl" value="right">'+
 					'<label class="pk_dis" for="kf7">Right Channel</label>'+
-					'</div>'+ 
+					'</div>'+
 
 					'<div class="pk_row"><input type="checkbox" class="pk_check pk_c_fl" id="xfc" name="flipChn">'+
-					'<label for="xfc">Flip Channels</label></div>' + 
+					'<label for="xfc">Flip Channels</label></div>' +
 					'</div>' +
 
 					'<div class="pk_row pk_ms" style="border:none;display:none">'+
 						'<div class="pk_row"><input type="checkbox" class="pk_check pk_c_ms" id="xms" checked name="makeStereo">'+
-						'<label for="xms">Make Stereo</label></div>' + 
+						'<label for="xms">Make Stereo</label></div>' +
 					'</div>',
 			  setup:function( q ) {
 			  	  var main = null;
@@ -447,14 +447,14 @@
 				  {
 				  	mode = 1;
 				  	main = q.el_body.getElementsByClassName('pk_mm')[0];
-				  	
+
 				  	var mono  = main.getElementsByClassName('pk_c_mm')[0];
 				  	var flip  = main.getElementsByClassName('pk_c_fl')[0];
 				  	var chans = main.getElementsByClassName('pk_c_c');
 				  	var tmp   = main.getElementsByClassName('pk_dis');
 				  	var lbls  = [tmp[0], tmp[1]];
 
-				  	mono.onchange = function( e ) { 
+				  	mono.onchange = function( e ) {
 				  		if (mono.checked) {
 				  			flip.checked = false;
 				  			chans[0].checked = true;
@@ -527,7 +527,7 @@
 					}
 				}
 			  ],
-			  body:'<div class="pk_row"><input type="radio" class="pk_check" id="ifeq" name="rdslnc" value="beginning">'+ 
+			  body:'<div class="pk_row"><input type="radio" class="pk_check" id="ifeq" name="rdslnc" value="beginning">'+
 				'<label  for="ifeq">Insert silence at beginning</label><br/>' +
 				'<input type="radio" class="pk_check"  id="vgdja" name="rdslnc" checked value="cursor">'+
 				'<label for="vgdja">Insert silence at current cursor (<span class="pkcdpk"></span>)</label></div>'+
@@ -612,33 +612,33 @@
 				{
 					title:'Apply',
 					clss:'pk_modal_a_accpt',
-					callback: function( q ) {		
+					callback: function( q ) {
 						var inputs = q.el_body.getElementsByTagName('input');
 						var val = getvalue ( q );
-						
+
 						app.fireEvent ('RequestActionFX_Compressor', val);
 
 						q.Destroy ();
 					}
 				}
 			  ],
-			  body:'<div class="pk_row"><label class="pk_line">Threshold</label>' + 
+			  body:'<div class="pk_row"><label class="pk_line">Threshold</label>' +
 				'<input class="pk_horiz" type="range" min="-100" max="0" step="0.1" value="-24.0" />'+
 				'<span class="pk_val">-24.0</span></div>'+
 
-				'<div class="pk_row"><label class="pk_line">Knee</label>' + 
+				'<div class="pk_row"><label class="pk_line">Knee</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="40.0" step="0.01" value="30.0" />'+
 				'<span class="pk_val">30.0</span></div>'+
 
-				'<div class="pk_row"><label class="pk_line">Ratio</label>' + 
+				'<div class="pk_row"><label class="pk_line">Ratio</label>' +
 				'<input class="pk_horiz" type="range" min="1.0" max="20.0" step="0.01" value="12.0" />'+
 				'<span class="pk_val">12.0</span></div>'+
 
-				'<div class="pk_row"><label class="pk_line">Attack</label>' + 
+				'<div class="pk_row"><label class="pk_line">Attack</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="1.0" step="0.001" value="0.003" />'+
 				'<span class="pk_val">0.003</span></div>'+
 
-				'<div class="pk_row" style="border:none"><label class="pk_line">Release</label>' + 
+				'<div class="pk_row" style="border:none"><label class="pk_line">Release</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="1.0" step="0.001" value="0.25" />'+
 				'<span class="pk_val">0.25</span></div>',
 				//'<a style="float:left;margin:0" class="pk_modal_a_bottom">Volume Graph</a></div>',
@@ -649,7 +649,7 @@
 				  inputs[i].oninput = function () {
 					  var span = this.parentNode.getElementsByTagName ('span')[0];
 					  span.innerHTML = (this.value/1).toFixed (3);
-					  
+
 					  updateFilter ();
 				  };
 				}
@@ -658,7 +658,7 @@
 				//graph_btn.onclick = function () {
 				//		auto = new PKAudioEditor._deps.FxAUT (PKAudioEditor, q);
 				//};
-				
+
 				function updateFilter() {
 					var val = getvalue ( q );
 					app.fireEvent ('RequestActionFX_UPDATE_PREVIEW', val);
@@ -702,7 +702,7 @@
 			  ],
 			  body:'<div class="pk_row">'+
 			    '<input type="checkbox" id="vhcjgs" class="pk_check" name="normEqually">'+
-				'<label for="vhcjgs">Normalize L/R Equally</label></div>' + 
+				'<label for="vhcjgs">Normalize L/R Equally</label></div>' +
 				'<div class="pk_row" style="border:none"><label>Normalize to</label>'+
 				'<input type="range" min="0.0" max="2.0" class="pk_horiz" step="0.01" value="1.0" />'+
 				'<span class="pk_val">100%</span></div>',
@@ -995,7 +995,7 @@
 				},
 			  body:
 				'<div class="pk_row"><input type="checkbox" class="pk_check" id="xighs" name="normEqually">'+
-				'<label for="xighs">Hard Limiting</label></div>' + 
+				'<label for="xighs">Hard Limiting</label></div>' +
 
 				'<div class="pk_row"><label>Limit to</label>'+
 				'<input type="range" min="0.1" max="1.0" class="pk_horiz pk_w180" step="0.01" value="0.99" />'+
@@ -1021,7 +1021,7 @@
 				},
 			  setup:function( q ) {
 				  var ranges = q.el_body.getElementsByClassName('pk_horiz');
-				  
+
 				  ranges[0].oninput = function() {
 					var span = this.parentNode.getElementsByTagName('span')[0];
 					span.innerHTML = (((this.value/1)*100) >> 0) + '%';
@@ -1099,24 +1099,24 @@
 				{
 					title:'Apply',
 					clss:'pk_modal_a_accpt',
-					callback: function( q ) {		
+					callback: function( q ) {
 						var val = getvalue (q);
-						
+
 						app.fireEvent ('RequestActionFX_DELAY', val);
 
 						q.Destroy ();
 					}
 				}
 			  ],
-			  body:'<div class="pk_row"><label class="pk_line">Delay Time</label>' + 
+			  body:'<div class="pk_row"><label class="pk_line">Delay Time</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="6.0" step="0.01" value="0.28" />'+
 				'<span class="pk_val">0.28</span></div>'+
 
-				'<div class="pk_row"><label class="pk_line">Feedback</label>' + 
+				'<div class="pk_row"><label class="pk_line">Feedback</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="1.0" step="0.01" value="0.5" />'+
 				'<span class="pk_val">0.5</span></div>'+
 
-				'<div class="pk_row"><label class="pk_line">Wet</label>' + 
+				'<div class="pk_row"><label class="pk_line">Wet</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="1.0" step="0.01" value="0.4" />'+
 				'<span class="pk_val">0.4</span></div>',
 				//'<a style="float:left;margin:0" class="pk_modal_a_bottom">Volume Graph</a></div>',
@@ -1127,7 +1127,7 @@
 				  inputs[i].oninput = function () {
 					  var span = this.parentNode.getElementsByTagName ('span')[0];
 					  span.innerHTML = (this.value/1).toFixed (3);
-					  
+
 					  updateFilter ();
 				  };
 				}
@@ -1138,7 +1138,7 @@
 				//};
 
 				function updateFilter() {
-					var val = getvalue (q);					
+					var val = getvalue (q);
 					app.fireEvent ('RequestActionFX_UPDATE_PREVIEW', val);
 				}
 
@@ -1190,7 +1190,7 @@
 				{
 					title:'Apply',
 					clss:'pk_modal_a_accpt',
-					callback: function( q ) {		
+					callback: function( q ) {
 						var val = getvalue (q);
 						app.fireEvent ('RequestActionFX_DISTORT', val);
 
@@ -1198,7 +1198,7 @@
 					}
 				}
 			  ],
-			  body:'<div class="pk_row"><label class="pk_line">Gain</label>' + 
+			  body:'<div class="pk_row"><label class="pk_line">Gain</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="2.0" step="0.01" value="0.5" />'+
 				'<span class="pk_val">0.5</span></div>',
 				// '<a style="float:left;margin:0" class="pk_modal_a_bottom">Volume Graph</a></div>',
@@ -1210,7 +1210,7 @@
 				  inputs[i].oninput = function () {
 					  var span = this.parentNode.getElementsByTagName ('span')[0];
 					  span.innerHTML = (this.value/1).toFixed (2);
-					  
+
 					  updateFilter ();
 				  };
 				}
@@ -1270,29 +1270,29 @@
 				{
 					title:'Apply',
 					clss:'pk_modal_a_accpt',
-					callback: function( q ) {		
+					callback: function( q ) {
 						var inputs = q.el_body.getElementsByTagName('input');
 						var val = {
 							time:     inputs[0].value/1,
 							decay:  inputs[1].value/1,
 							mix:       inputs[2].value/1
 						};
-						
+
 						app.fireEvent ('RequestActionFX_REVERB', val);
 
 						q.Destroy ();
 					}
 				}
 			  ],
-			  body:'<div class="pk_row"><label class="pk_line">Time</label>' + 
+			  body:'<div class="pk_row"><label class="pk_line">Time</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="3.0" step="0.01" value="0.3" />'+
 				'<span class="pk_val">0.3</span></div>'+
 
-				'<div class="pk_row"><label class="pk_line">Decay</label>' + 
+				'<div class="pk_row"><label class="pk_line">Decay</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="3.0" step="0.01" value="0.05" />'+
 				'<span class="pk_val">0.05</span></div>'+
 
-				'<div class="pk_row"><label class="pk_line">Wet</label>' + 
+				'<div class="pk_row"><label class="pk_line">Wet</label>' +
 				'<input class="pk_horiz" type="range" min="0.0" max="1.0" step="0.01" value="0.6" />'+
 				'<span class="pk_val">0.6</span></div>',
 			  setup:function( q ) {
@@ -1302,11 +1302,11 @@
 				  inputs[i].oninput = function () {
 					  var span = this.parentNode.getElementsByTagName ('span')[0];
 					  span.innerHTML = (this.value/1).toFixed (3);
-					  
+
 					  updateFilter ();
 				  };
 				}
-				
+
 				function updateFilter() {
 					var inputs = q.el_body.getElementsByTagName('input');
 					var val = {
@@ -1362,7 +1362,7 @@
 						}
 
 						str += '<div><span style="float:left" class="pk_id3ttl">Cover</span>' +
-								'<span><img style="max-width:340px" src="data:' + 
+								'<span><img style="max-width:340px" src="data:' +
 								image.format + ';base64,' + window.btoa(base64str) + '"/></span></div>';
 					}
 
@@ -1387,7 +1387,7 @@
 
 				  		input.onchange = function ( e ) {
 							var reader = new FileReader();
-							
+
 							reader.onload = function() {
 								var tags = PKAudioEditor.engine.ID3 (this.result);
 
@@ -1543,7 +1543,7 @@
 
 					new PKSimpleModal({
 					  title:title,
-					  
+
 					  ondestroy: function( q ) {
 					  	app.ui.InteractionHandler.forceUnset (modal_id);
 
@@ -1586,7 +1586,7 @@
 						btn_update,
 						btn_delete
 					  ],
-					  body:'<label for="k07">Preset Name</label>' + 
+					  body:'<label for="k07">Preset Name</label>' +
 						'<input style="min-width:340px" maxlength="16" placeholder="Please type a name, eg: My Preset" ' + default_txt + ' class="pk_txt" type="text" id="k07" />',
 					  setup:function( q ) {
 					  	  	// app.fireEvent ('RequestPause');
@@ -1620,7 +1620,7 @@
 					// ---
 			}
 
-			// document.querySelector('.pk_modal_main').getElementsByTagName('input')[0].value 
+			// document.querySelector('.pk_modal_main').getElementsByTagName('input')[0].value
 		});
 
 
@@ -1682,7 +1682,7 @@
 				{
 					cur_win.el.style.display = 'none';
 					setTimeout(function() {
-						cur_win.el.style.display = 'block';					
+						cur_win.el.style.display = 'block';
 					},0);
 					el_back.focus ();
 				}
@@ -1742,7 +1742,7 @@
 						cur_win.el.style.left = lw + 'px';
 						// ----
 					}
-					// check if we didn't move - in that return 
+					// check if we didn't move - in that return
 				}
 
 				el_back.onmousemove = null;
@@ -1881,7 +1881,7 @@
 						iframe.parentNode.removeChild ( iframe );
 						iframe = null;
 
-						var ch = app.ui.BarBtm.el.childNodes; 
+						var ch = app.ui.BarBtm.el.childNodes;
 						if (ch.length === 0) {
 							app.ui.BarBtm.Hide ();
 							return ;
