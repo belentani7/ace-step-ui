@@ -1,15 +1,37 @@
-# Modelo de monetización — ace-step-ui
+
+
+<!-- repo-forge:plataforma-paywall:inicio -->
+# Monetización por fases — ACE Step UI
+
+## Principio
+
+**acceso abierto; monetización solo si hay servicio real detrás**. Paga: quien recibe un servicio, no quien lee.
+
+## Fases
+
+| Fase | Nombre | Gratis | Pago | Qué se bloquea | Métrica |
+|---|---|---|---|---|---|
+| 1 | Abierto | todo | nada | ninguno | uso |
+| 2 | Servicio | el artefacto | trabajo hecho a medida | solo encargos | encargos |
+| 3 | Licencia | uso personal | uso comercial | licencia comercial | licencias |
+| 4 | Patrocinio | todo | marcas que apoyan | ninguno | patrocinios |
+
+## Por qué cada fase
+
+- **Fase 1 — Abierto:** primero ser útil
+- **Fase 2 — Servicio:** se cobra el trabajo, no el archivo
+- **Fase 3 — Licencia:** quien factura con ello, paga
+- **Fase 4 — Patrocinio:** sostener sin cerrar
 
 ## Regla dura
-El núcleo de generación musical local (ACE-Step 1.5 en el navegador/equipo del usuario) **nunca se bloquea detrás de un muro de pago ni exige registro**. Cobrar el acceso a la aplicación rompería la promesa del repositorio.
 
-## Qué se paga
-| Concepto | ¿Se cobra? | Qué incluye |
-|----------|------------|-------------|
-| Uso de la app local | No | Generación ilimitada, código fuente, pesos del modelo descargables |
-| Alojamiento gestionado | Sí | Instancia desplegada, mantenida, con backups |
-| Entrenamiento LoRA | Sí | Modelo musical personalizado con datos del cliente |
-| Consultoría | Sí | Integración en flujos de producción, soporte prioritario |
+si no hay servicio, no hay muro
 
-## Estructura de pago
-No hay paywall en el cliente. El cobro ocurre en servicios opcionales alrededor del producto, no dentro de la aplicación.
+## Lo que no se hace
+
+- No se cobra por acceder a lo que la promesa declara abierto.
+- No se pide registro para leer.
+- No se activa ninguna fase sin decisión explícita del propietario.
+
+<!-- repo-forge:paywall -->
+<!-- repo-forge:plataforma-paywall:fin -->

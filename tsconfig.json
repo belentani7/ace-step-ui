@@ -26,6 +26,5 @@
     "allowImportingTsExtensions": true,
     "noEmit": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "declarations.d.ts"],
   "exclude": ["server", "legacy", "node_modules", "dist"]
 }
