@@ -1,34 +1,69 @@
-# Ficha de producto — ace-step-ui
 
-## Identidad
-- **Nombre:** ACE-Step UI
-- **Tipo:** aplicación web local de generación musical con IA (ACE-Step 1.5)
-- **Modelo de producto:** herramienta / servicio web (autoalojable)
-- **Licencia:** MIT (derivados comerciales permitidos, procedencia del fork declarada)
-- **Stack:** React 18 + TypeScript + Vite + Tailwind CSS + SQLite (local-first)
 
-## Qué resuelve
-Ofrece una alternativa libre y 100% local a servicios de pago de música con IA (Suno/Udio). Cualquier usuario con GPU puede generar canciones completas con voces en su propio equipo, sin suscripciones, sin nube y con sus datos y audio bajo su control.
+<!-- repo-forge:plataforma-ficha:inicio -->
+# Ficha — ACE Step UI (`ace-step-ui`)
 
-## Máximo potencial alcanzable
-| Dimensión | Estado actual | Techo |
-|-----------|---------------|-------|
-| Generación musical local | Funcional (ACE-Step 1.5) | Entrenamiento LoRA por encargo + modelos personalizados |
-| Interfaz | Spotify-like, React + Tailwind | App móvil (Expo/React Native) + desktop (Electron/Tauri) |
-| Despliegue | Local + servidor opcional en `server/` | GitHub Pages para demo + Vercel para hosting |
-| Monetización | No definida | Consultoría de integración, alojamiento gestionado, entrenamiento LoRA, plugins de estudio |
-| Idiomas | ES/PT/CA/EN (i18n) | 10+ idiomas |
+> Generada por repo-forge el 2026-11-10 desde el árbol real. Cada cifra tiene su fuente en
+> [`docs/FUENTES.md`](../docs/FUENTES.md).
 
-## Brechas para completar el producto comercial
-1. **OFERTA.md**: redactar oferta comercial concreta (pendiente).
-2. **precios.json**: definir precios de servicio/consultoría (pendiente).
-3. **COBRO.md**: flujo de pago y facturación (pendiente).
-4. **ONEPAGER.md**: landing de venta (pendiente).
-5. **DEMO.md**: guion de demo grabado (pendiente).
-6. **METRICAS.md**: KPIs de adopción y uso (pendiente).
-7. **Enlace en README**: apuntar a la landing de producto (pendiente).
+## 1. Identidad
 
-## Auditoría interna
-- Tests: 3/3 en verde (`npm test`)
-- Typecheck: pendiente (`npm run typecheck`)
-- Build: pendiente (`npm run build`)
+| Campo | Valor |
+|---|---|
+| Repositorio | `belentani7/ace-step-ui` |
+| Tipo de plataforma | aplicación web con build (Next/Vite/Expo) |
+| Modelo de producto | fork de interfaz de generación musical |
+| Público | uso propio |
+| Stack medido | JavaScript 52.1%, TypeScript 37.4%, JSON 5.1%, HTML 2.3%, CSS 1.5%, Python 0.8% |
+| Tamaño | 166 archivos · 57278 líneas · 3.2 MB |
+
+## 2. Máximo potencial
+
+interfaz propia con las mejoras que el fork no trae, sin perder el upstream
+
+Ese es el techo, no el estado. Lo que hoy existe es lo del apartado 3.
+
+## 3. Lo que hay hoy
+
+- Páginas HTML: 9
+- Tests: 2
+- CI: sí
+- Licencia: sí
+- README: sí (584 líneas)
+- Cumplimiento de reglas: **36/37** (97.3%)
+
+## 4. Diseño de plataforma que la promesa exige
+
+| Módulo | Por qué | Estado |
+|---|---|---|
+| Interfaz | La promesa lo exige | pendiente |
+| Cola | La promesa lo exige | pendiente |
+| Ajustes | La promesa lo exige | pendiente |
+
+Datos: presets.
+Integraciones: ace-step.
+
+## 5. Brechas
+
+Reglas en rojo: `DEV-05`.
+
+Cada una tiene su corrección en `CAMBIOS.md` o queda declarada como pendiente.
+
+## 6. Esfuerzo para llegar al techo
+
+| Fase | Contenido | Días-persona |
+|---|---|---|
+| 1 | Cerrar reglas en rojo y dejar el gate en verde | 1 |
+| 2 | Módulos 1–2 del diseño, con prueba | 9 |
+| 3 | Módulos restantes y contenido real | 15 |
+| 4 | Pulido, accesibilidad auditada y publicación | 6 |
+
+Supuestos: una persona con contexto del stack, sin bloqueos externos, y sin contar
+dependencias de terceros que hoy no estén instaladas.
+
+## 7. Lo que este repositorio no va a hacer
+
+presentar el fork como producto propio
+
+<!-- repo-forge:ficha -->
+<!-- repo-forge:plataforma-ficha:fin -->
