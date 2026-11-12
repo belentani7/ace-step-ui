@@ -111,6 +111,22 @@ export interface Song {
   generation_params?: unknown;
 }
 
+// Representación en el wire: mezcla snake_case y aliases camelCase
+export type SongWire = Song & {
+  coverUrl?: string;
+  audioUrl?: string;
+  isPublic?: boolean;
+  likeCount?: number;
+  viewCount?: number;
+  userId?: string;
+  dit_model?: string;
+  isGenerating?: boolean;
+  queuePosition?: number;
+  createdAt?: string;
+  added_at?: string;
+  creatorAvatar?: string;
+};
+
 // Transform songs to have proper audio URLs
 function transformSongs(songs: Song[]): Song[] {
   return songs.map(song => {
@@ -158,7 +174,7 @@ export const songsApi = {
     api('/api/songs', { method: 'POST', body: song, token }),
 
   updateSong: async (id: string, updates: Partial<Song>, token: string): Promise<{ song: unknown }> => {
-    const result = await api(`/api/songs/${id}`, { method: 'PATCH', body: updates, token }) as { song: unknown };
+    const result = await api(`/api/songs/${id}`, { method: 'PATCH', body: updates, token }) as { song: SongWire };
     const s = result.song;
     const rawUrl = s.audio_url || s.audioUrl;
     const resolvedUrl = getAudioUrl(rawUrl, s.id);

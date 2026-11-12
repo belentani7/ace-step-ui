@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Song, Playlist, playlistsApi, songsApi, getAudioUrl } from '../services/api';
+import { Song, SongWire, Playlist, playlistsApi, songsApi, getAudioUrl } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { useI18n } from '../context/I18nContext';
 import { ArrowLeft, Play, MoreHorizontal, Clock, Calendar, Shuffle, Trash2, Mic2, Music } from 'lucide-react';
@@ -30,7 +30,7 @@ export const PlaylistDetail: React.FC<PlaylistDetailProps> = ({ playlistId, onBa
             // res.playlist comes from DB row, which now includes creator_avatar
             setPlaylist(res.playlist as any);
 
-            const mappedSongs: Song[] = res.songs.map((s: unknown) => ({
+            const mappedSongs: Song[] = res.songs.map((s: SongWire) => ({
                 id: s.id,
                 title: s.title,
                 lyrics: s.lyrics,

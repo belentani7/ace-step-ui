@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Search, Play, Pause, Heart, ChevronRight, ChevronLeft, Copy, Check, X, Loader2 } from 'lucide-react';
 import { Song, Playlist } from '../types';
-import { songsApi, usersApi, playlistsApi, searchApi, UserProfile, getAudioUrl } from '../services/api';
+import { songsApi, usersApi, playlistsApi, searchApi, UserProfile, getAudioUrl, SongWire } from '../services/api';
 import { useI18n } from '../context/I18nContext';
 import { GENRE_KEYS } from '../data/genres';
 
@@ -52,7 +52,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
     loadFeaturedContent();
   }, []);
 
-  const transformSong = (s: unknown): ExtendedSong => ({
+  const transformSong = (s: SongWire): ExtendedSong => ({
     ...s,
     id: s.id,
     title: s.title,
@@ -98,7 +98,7 @@ export const SearchPage: React.FC<SearchPageProps> = ({
         setFeaturedCreators(creatorsRes.value.creators.slice(0, MAX_RESULTS));
       } else if (songsRes.status === 'fulfilled' && songsRes.value.songs?.length > 0) {
         const uniqueCreators = new Map<string, UserProfile & { song_count?: number }>();
-        songsRes.value.songs.forEach((song: unknown) => {
+        songsRes.value.songs.forEach((song: SongWire) => {
           if (song.creator && !uniqueCreators.has(song.creator)) {
             uniqueCreators.set(song.creator, {
               id: song.user_id || song.userId || song.creator,

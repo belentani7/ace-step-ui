@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "mimosa-hook-status/v1",
+  "recordedAt": "2026-11-09T08:45:40.450Z",
+  "sessionId": "sess_6c957c3c-e881-482f-ae76-780538872442",
+  "event": "PostToolUse",
+  "toolName": "Write",
+  "file": "C:\\Users\\USER\\workspace\\HERRAMIENTAS-MUSICA-GUITARRA-VIDEO.md",
+  "outcome": "clear",
+  "coverage": "complete",
+  "findingCount": 0,
+  "durationMs": 29,
+  "hostState": "hook_complete",
+  "reportHint": ".mimosa/reports/"
+}

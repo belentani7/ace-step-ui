@@ -597,7 +597,7 @@ export const TrainingPanel: React.FC = () => {
     if (m?.data && Array.isArray(m.data)) {
       points = m.data.map((row: unknown[]) => ({ step: Number(row[0]) || 0, loss: Number(row[1]) || 0 })).filter((p: { loss: number }) => p.loss > 0);
     } else if (Array.isArray(m)) {
-      points = m.map((item: unknown, i: number) => ({ step: item.step ?? item.x ?? i, loss: item.loss ?? item.y ?? 0 })).filter((p: { loss: number }) => p.loss > 0);
+      points = m.map((item: { step?: number; x?: number; loss?: number; y?: number }, i: number) => ({ step: item.step ?? item.x ?? i, loss: item.loss ?? item.y ?? 0 })).filter((p: { loss: number }) => p.loss > 0);
     }
     if (points.length < 2) return null;
     const width = 280, height = 100, pad = 4;

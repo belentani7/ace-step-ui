@@ -12,7 +12,7 @@ import { UserProfile } from './components/UserProfile';
 import { SettingsModal } from './components/SettingsModal';
 import { SongProfile } from './components/SongProfile';
 import { Song, GenerationParams, View, Playlist } from './types';
-import { generateApi, songsApi, playlistsApi, getAudioUrl } from './services/api';
+import { generateApi, songsApi, playlistsApi, getAudioUrl, SongWire } from './services/api';
 import { useAuth } from './context/AuthContext';
 import { useResponsive } from './context/ResponsiveContext';
 import { I18nProvider, useI18n } from './context/I18nContext';
@@ -311,7 +311,7 @@ function AppContent() {
           songsApi.getLikedSongs(token)
         ]);
 
-        const mapSong = (s: unknown): Song => ({
+        const mapSong = (s: SongWire): Song => ({
           id: s.id,
           title: s.title,
           lyrics: s.lyrics,
@@ -881,7 +881,7 @@ function AppContent() {
         const jobs = Array.isArray(history.jobs) ? history.jobs : [];
 
         const activeStatuses = new Set(['pending', 'queued', 'running']);
-        const jobsToResume = jobs.filter((job: unknown) => activeStatuses.has(job.status));
+        const jobsToResume = jobs.filter((job: { status: string }) => activeStatuses.has(job.status));
 
         if (jobsToResume.length === 0) return;
 
