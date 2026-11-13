@@ -1,0 +1,33 @@
+{
+  "repo": "ace-step-ui",
+  "moneda": "EUR",
+  "estado": "propuesta",
+  "modelo": "servicio-web",
+  "quien_paga": "cliente final (músicos, estudios, productoras)",
+  "que_se_bloquea": "reserva de instancia gestionada y soporte prioritario",
+  "regla_dura": "nunca se oculta el precio para pedir el email; el núcleo de generación local sigue siendo libre y autoalojable",
+  "planes": [
+    {
+      "nombre": "Autoalojado",
+      "precio": 0,
+      "descripcion": "Descarga y despliegue local gratuito. Código fuente abierto (MIT)."
+    },
+    {
+      "nombre": "Alojamiento gestionado",
+      "precio": 49,
+      "periodo": "mes",
+      "descripcion": "Instancia ACE-Step UI desplegada y mantenida por el equipo, con copias de seguridad."
+    },
+    {
+      "nombre": "Entrenamiento LoRA por encargo",
+      "precio": 299,
+      "descripcion": "Modelo musical personalizado entrenado con los datos del cliente."
+    },
+    {
+      "nombre": "Consultoría de integración",
+      "precio": 89,
+      "periodo": "hora",
+      "descripcion": "Integración de ACE-Step UI en flujos de producción existentes."
+    }
+  ]
+}

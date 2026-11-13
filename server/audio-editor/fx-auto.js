@@ -112,7 +112,7 @@
 
 						if (curr._on)
 							ctx.fillStyle = '#fff';
-						else 
+						else
 							ctx.fillStyle = '#686868';
 
 						ctx.stroke ();
@@ -125,7 +125,7 @@
 
 						if (curr._on)
 							ctx.fillStyle = 'blue';
-						else 
+						else
 							ctx.fillStyle = 'darkblue';
 
 						ctx.stroke ();
@@ -241,7 +241,7 @@
 				}
 
 				q.act_point.time = duration * rel_x;
-				q.act_point.val  = ((1 - rel_y) * q.act.max - q.act.min) + q.act.min; 
+				q.act_point.val  = ((1 - rel_y) * q.act.max - q.act.min) + q.act.min;
 
 				q.Render ();
 
@@ -368,7 +368,7 @@
 			q.modal.el_body.appendChild( cc );
 
 			var buff = q.wv.backend.buffer;
-			
+
 			var img = new Image();
 			img.onload = function () {
 				ctx.drawImage (img, 0, 0);
@@ -415,7 +415,7 @@
 
 			var newbuffer = audio_ctx.createBuffer (1, durr * buffer.sampleRate, buffer.sampleRate);
 			newbuffer.getChannelData ( 0 ).set (
-				buffer.getChannelData ( 0 ).slice ( (offs * buffer.sampleRate) / 4, ((offs + durr) * buffer.sampleRate)/4 ) 
+				buffer.getChannelData ( 0 ).slice ( (offs * buffer.sampleRate) / 4, ((offs + durr) * buffer.sampleRate)/4 )
 			);
 
 			var source = audio_ctx.createBufferSource ();
@@ -438,7 +438,7 @@
 						q.Render ();
 
 			};
-			var offline_renderer = audio_ctx.startRendering(); 
+			var offline_renderer = audio_ctx.startRendering();
 			if (offline_renderer)
 				offline_renderer.then( offline_callback ).catch(function(err) {
 					console.log('Rendering failed: ' + err);

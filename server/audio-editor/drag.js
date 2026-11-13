@@ -20,7 +20,7 @@
 					ret.push( classes[ i ] );
 			el.className = ret.join(' ');
 		};
-		
+
 	if( !window.FileReader || !document.addEventListener ) {
 		throw( "File API not supported" );
 		readFile = function(){ throw( "File API not supported" ); };
@@ -31,7 +31,7 @@
 			/** Error handler (throws error at the console) **/
 			reader.onerror = function( e ) {
 				var message,
-					lut = [ "File not found.", "File coulnot be opened",  
+					lut = [ "File not found.", "File coulnot be opened",
 						"File couldnot be uploaded", "Couldnot read File", "File too large" ];
 				// http://www.w3.org/TR/FileAPI/#ErrorDescriptions
 				throw( lut[ ( e.target.error.code - 1 ) ] );
@@ -41,13 +41,13 @@
 				callback && callback( e.target.result, file.name );
 				reader.onloadend = null;
 			};
-			
+
 			// the method is specified in the beginning of the file
 			reader[ method ]( file );
 			return false;
 		};
 	}
-	
+
 	/**
 	*	Drag n Drop Files module
 	*	@param	HTMLElement, could be the Body
@@ -66,7 +66,7 @@
 		// that do not support it somehow yet
 		if( ( 'ontouchstart' in window ) )
 			return "mobile";
-		
+
 			/** JS Object, used to define the file-reading method **/
 		var method_lut = {
 				'text'		 :	'readAsText',
@@ -78,8 +78,8 @@
 			method = method ? method_lut[ method ] : 'readAsText',
 			/** how many events cast (dragenter/dragleave) **/
 			entered = 0,
-			/** 
-			* DOMElement sink for the drag events 
+			/**
+			* DOMElement sink for the drag events
 			* if left unspecified then the body inherits the role
 			**/
 			overlay = !!overlay_id ? overlay_id : body,
@@ -93,7 +93,7 @@
 					var tmp = document.createElement( 'div' );
 					overlay = document.createElement( 'div' );
 					overlay.id = overlay_id;
-					
+
 					tmp.innerHTML = "Drag n drop Files!";
 					overlay.appendChild( tmp );
 
@@ -103,7 +103,7 @@
 			},
 			/**
 			*	JS Object
-			*	The events Object contains various functions that control 
+			*	The events Object contains various functions that control
 			*	the behavior of the events fired
 			**/
 			events = {
@@ -114,14 +114,14 @@
 					e.preventDefault();
 					e.stopPropagation()
 				},
-				
+
 				/**
 				*	Shows message to drop file
 				**/
 				onDragEnter	:	function( e ) {
 					// overlay.className += " " + clss;
 					++entered;
-					
+
 					setTimeout(function() {
 						if( entered > 1 )
 							entered = 1;
@@ -132,7 +132,7 @@
 				**/
 				onDragLeave	:	function( e ) {
 					--entered;
-					
+
 					if( entered <= 0 )
 					{
 						removeClass( overlay, clss );
@@ -145,26 +145,26 @@
 				onDrop	:	function( e ) {
 					// prevent the event from bubbling/firing default
 					events.silencer( e );
-					
+
 					// Hide the overlay
 					removeClass( overlay, clss );
 					entered = 0;
-					
+
 					/** dropped files. **/
 					var files = e.dataTransfer.files,
 						len;
-					
+
 					// If anything is wrong with the dropped files, exit.
 					if(	!files || !files.length )
 						return false;
-					
+
 					len = files.length;
 					while( len-- )
 						// iterate files array and load them
 						readFile( files[ len ], callback, method );
 				}
 			};
-		
+
 		(function init() {
 			//_overlayBuilder();
 			// events initialization

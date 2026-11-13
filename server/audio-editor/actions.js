@@ -31,7 +31,7 @@
 				wavesurfer.drawBuffer();
 			},40);
 		}
-		
+
 		function MakeSilenceBuffer ( _duration ) {
 			var originalBuffer = wavesurfer.backend.buffer;
 			var emptySegment = wavesurfer.backend.ac.createBuffer(
@@ -67,8 +67,8 @@
 			}
 			return (emptySegment);
 		};
-		
-		
+
+
 		function TrimBuffer( _offset, _duration, force ) {
 			var originalBuffer = wavesurfer.backend.buffer;
 
@@ -108,7 +108,7 @@
 						segment_chan_data.set (
 							chan_data.slice ( new_offset, new_offset + new_len )
 						);
-						
+
 						uber_chan_data.set (
 							chan_data.slice ( 0, new_offset )
 						);
@@ -135,11 +135,11 @@
 					segment_chan_data.set (
 						chan_data.slice ( new_offset, new_offset + new_len )
 					);
-					
+
 					uber_chan_data.set (
 						chan_data.slice ( 0, new_offset )
 					);
-					
+
 					uber_chan_data.set (
 						chan_data.slice ( new_offset + new_len ), new_offset
 					);
@@ -150,9 +150,9 @@
 
 			return (emptySegment);
 		};
-		
-		
-		
+
+
+
 		function InsertSegmentToBuffer( _offset, buffer ) {
 			var originalBuffer = wavesurfer.backend.buffer;
 			var uberSegment = wavesurfer.backend.ac.createBuffer(
@@ -184,7 +184,7 @@
 						uberChanData.set (
 							chan_data
 						);
-					
+
 						continue;
 					}
 				}
@@ -207,11 +207,11 @@
 					);
 				}
 			}
-			
+
 			loadDecoded ( uberSegment, originalBuffer );
 
 			return [
-				(_offset / originalBuffer.sampleRate), 
+				(_offset / originalBuffer.sampleRate),
 				(_offset / originalBuffer.sampleRate) + (buffer.length / originalBuffer.sampleRate)
 			];
 		};
@@ -267,7 +267,7 @@
 			loadDecoded ( uberSegment, originalBuffer );
 
 			return [
-				(_offset / originalBuffer.sampleRate), 
+				(_offset / originalBuffer.sampleRate),
 				(_offset / originalBuffer.sampleRate) + (new_len / originalBuffer.sampleRate)
 			];
 		};
@@ -317,11 +317,11 @@
 			loadDecoded ( uberSegment, originalBuffer );
 
 			return [
-				(_offset / originalBuffer.sampleRate), 
+				(_offset / originalBuffer.sampleRate),
 				(_offset / originalBuffer.sampleRate) + (new_len / originalBuffer.sampleRate)
 			];
 		};
-		
+
 		function getAudioContext() {
 			if (!window.WaveSurferAudioContext) {
 				window.WaveSurferAudioContext = new (window.AudioContext ||
@@ -397,7 +397,7 @@
 				this.PreviewSource.connect (this.PreviewDestination);
 				this.previewing = 1;
 				this.previewVal = false;
-				
+
 				return (false);
 			}
 			else
@@ -486,7 +486,7 @@
 					{
 						if (prev_fft !== audio_destination.fftSize)
 						{
-		                	dataArray = new Float32Array(audio_destination.fftSize); // Float32Array needs to be the same length as the fftSize 
+		                	dataArray = new Float32Array(audio_destination.fftSize); // Float32Array needs to be the same length as the fftSize
 		                	prev_fft = audio_destination.fftSize;
 		                }
 		                audio_destination.getFloatTimeDomainData (dataArray); // fill the Float32Array with data returned from getFloatTimeDomainData()
@@ -504,7 +504,7 @@
 					{
 						if (prev_fft !== audio_destination.fftSize)
 						{
-		                	dataArray = new Uint8Array(audio_destination.fftSize); // Float32Array needs to be the same length as the fftSize 
+		                	dataArray = new Uint8Array(audio_destination.fftSize); // Float32Array needs to be the same length as the fftSize
 		                	prev_fft = audio_destination.fftSize;
 		                }
 		                audio_destination.getByteTimeDomainData (dataArray); // fill the Float32Array with data returned from getFloatTimeDomainData()
@@ -585,7 +585,7 @@
 					orig_buffer.length,
 					orig_buffer.sampleRate
 				);
-				
+
 				for (var i = 0; i < orig_buffer.numberOfChannels; ++i)
 				{
 					var uber_chan_data = uber_buffer.getChannelData (i);
@@ -616,7 +616,7 @@
 				}
 
 				loadDecoded ( uber_buffer );
-				
+
 				if (filter.length > 0) {
 					for (var i = 0; i < filter.length; ++i) filter[i].disconnect ();
 				} else filter && filter.disconnect && filter.disconnect ();
@@ -628,7 +628,7 @@
 				// -
 			};
 
-			var offline_renderer = audio_ctx.startRendering(); 
+			var offline_renderer = audio_ctx.startRendering();
 			if (offline_renderer)
 				offline_renderer.then( offline_callback ).catch(function(err) {
 					console.log('Rendering failed: ' + err);
@@ -678,7 +678,7 @@
 				   buffer_source.stop ();
 				   buffer_source.disconnect ();
 				   scp.disconnect ();
-				   
+
 				for (var i = 0; i < finger_print.length; ++i)
 				{
 					finger_print[ i ] /= samples >> 0;
@@ -712,7 +712,7 @@
 					{
 						cleanUpSpecificAudioRange.apply (q, [_offset, _duration, similarity]);
 					}
-					
+
 					callback && callback ();
 				});
 			};
@@ -733,14 +733,14 @@
 				}
 				test ();
 				// -
-				
+
 			}
 		}
 		function cleanUpSpecificAudioRange (_offset, _duration, _frequencies) {
 			// var fx_buffer = CopyBufferSegment (_offset, _duration);
 			var val = [];
 			var all_ok = false;
-			
+
 			for (var i = 0; i < _frequencies.length; ++i)
 			{
 				if (!_frequencies[i]) continue;
@@ -774,7 +774,7 @@
 
 							return (eq);
 						};
-						
+
 						var eq = makeEQ ( val [0] );
 						bands.push ( eq );
 						source.connect (eq);
@@ -795,7 +795,7 @@
 //		}
 		// ENDOF ATTEMPTING BACKGROUND NOISE REMOVAL
 		/////////////// -----------------------
-		
+
 
 		var worker = null;
 		function DownloadFileCancel () {
@@ -810,7 +810,7 @@
 			else {
 				return false;
 			}
-			
+
 
 			if (format === 'mp3') {
 				worker = new Worker('lame.js');
@@ -914,7 +914,7 @@
 
 			// function forceDownload ( mp3Data ) {
 			// 	var blob = new Blob (mp3Data, {type:'audio/mp3'});
-			function forceDownload ( blob ) {			
+			function forceDownload ( blob ) {
 				var url = (window.URL || window.webkitURL).createObjectURL(blob);
 
 				var a = document.createElement( 'a' );
@@ -927,12 +927,12 @@
 				callback && callback ('done');
 			}
 		}
-		
+
 		function updatePreview ( val ) {
 			if (!this.previewing) return ;
 			this.PreviewUpdate && this.PreviewUpdate ( this.PreviewFilter, audio_ctx, val, this.PreviewSource );
 		}
-		
+
 
 		// EFFECTS LOGIC
 		var FXBank = {
@@ -980,35 +980,35 @@
 					}
 				};
 			},
-			
+
 			FadeIn : function( val ) {
 				return {
 					filter : function ( audio_ctx, destination, source, duration ) {
 						var gain = audio_ctx.createGain ();
 						gain.gain.setValueAtTime (0, audio_ctx.currentTime);
 						gain.gain.linearRampToValueAtTime (1, audio_ctx.currentTime + duration/1);
-						gain.connect (destination);	
+						gain.connect (destination);
 						source.connect (gain);
 
 						return (gain);
 					}
 				};
 			},
-			
+
 			FadeOut : function( val ) {
 				return {
 					filter : function ( audio_ctx, destination, source, duration ) {
 						var gain = audio_ctx.createGain ();
 						gain.gain.setValueAtTime (1, audio_ctx.currentTime);
 						gain.gain.linearRampToValueAtTime (0, audio_ctx.currentTime + duration/1);
-						gain.connect (destination);			
+						gain.connect (destination);
 						source.connect (gain);
 
 						return (gain);
 					}
 				};
 			},
-			
+
 			Compressor : function ( val ) {
 				return {
 					filter : function ( audio_ctx, destination, source, duration ) {
@@ -1070,14 +1070,14 @@
 					update : function () {}
 				};
 			},
-			
+
 			Invert : function ( val ) {
 				return {
 					filter : function ( audio_ctx, destination, source, duration ) {
 
 						for (var i = 0; i < source.buffer.numberOfChannels; ++i) {
 							var channel = source.buffer.getChannelData (i);
-							
+
 							for (var j = 0; j < channel.length; ++j)
 								channel[j] *= -1;
 						}
@@ -1140,7 +1140,7 @@
 								max_peak = 0;
 							}
 						}
-						
+
 						if (equally) {
 							var diff = max_val / max_peak;
 
@@ -1159,7 +1159,7 @@
 					update : function () {}
 				};
 			},
-			
+
 			HardLimit : function ( val ) { //todo ASM JS??
 				return {
 					filter : function ( audio_ctx, destination, source, duration ) {
@@ -1174,9 +1174,9 @@
 							source.buffer.length,
 							source.buffer.sampleRate
 						);
-						
+
 						look_ahead = (look_ahead * buffer.sampleRate/1000) >> 0;
-						
+
 						for (var i = 0; i < buffer.numberOfChannels; ++i) {
 							var chan_data = buffer.getChannelData (i);
 							chan_data.set ( source.buffer.getChannelData (i) );
@@ -1189,7 +1189,7 @@
 									if (max_peak < curr)
 										max_peak = curr;
 								}
-								
+
 								var diff = (max_val / max_peak);
 
 								if (!equally) {
@@ -1229,7 +1229,7 @@
 					}
 				};
 			},
-			
+
 			ParametricEQ : function ( val ) {
 				return {
 					filter : function ( audio_ctx, destination, source, duration ) {
@@ -1783,6 +1783,6 @@
 		// this.MatchTopFrequencies= killdTopFrequencies;
 		// ---
 	};
-	
+
 	PKAE._deps.audioutils = AudioUtils;
 })( PKAudioEditor );

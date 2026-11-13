@@ -98,3 +98,6 @@ logs/
 legacy/
 _stems/
 *.pyc
+
+# repo-forge
+.next/

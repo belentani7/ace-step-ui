@@ -1356,12 +1356,12 @@ function preRun() {
 
 function initRuntime() {
   runtimeInitialized = true;
-  
+
   callRuntimeCallbacks(__ATINIT__);
 }
 
 function preMain() {
-  
+
   callRuntimeCallbacks(__ATMAIN__);
 }
 
@@ -1697,7 +1697,7 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  
+
 };
 
 
@@ -1750,7 +1750,7 @@ var ASM_CONSTS = {
       return demangleAll(js);
     }
 
-  
+
   var _emscripten_get_now;if (ENVIRONMENT_IS_NODE) {
     _emscripten_get_now = function() {
       var t = process['hrtime']();
@@ -1760,9 +1760,9 @@ var ASM_CONSTS = {
     _emscripten_get_now = dateNow;
   } else _emscripten_get_now = function() { return performance.now(); }
   ;
-  
+
   var _emscripten_get_now_is_monotonic=true;;
-  
+
   function setErrNo(value) {
       HEAP32[((___errno_location())>>2)]=value;
       return value;
@@ -1790,11 +1790,11 @@ var ASM_CONSTS = {
       HEAPU8.copyWithin(dest, src, src + num);
     }
 
-  
+
   function _emscripten_get_heap_size() {
       return HEAPU8.length;
     }
-  
+
   function emscripten_realloc_buffer(size) {
       try {
         // round size grow request up to wasm page size (fixed 64KB per spec)
@@ -1807,51 +1807,51 @@ var ASM_CONSTS = {
       requestedSize = requestedSize >>> 0;
       var oldSize = _emscripten_get_heap_size();
       // With pthreads, races can happen (another thread might increase the size in between), so return a failure, and let the caller retry.
-  
-  
+
+
       var PAGE_MULTIPLE = 65536;
-  
+
       // Memory resize rules:
       // 1. When resizing, always produce a resized heap that is at least 16MB (to avoid tiny heap sizes receiving lots of repeated resizes at startup)
       // 2. Always increase heap size to at least the requested size, rounded up to next page multiple.
-      // 3a. If MEMORY_GROWTH_LINEAR_STEP == -1, excessively resize the heap geometrically: increase the heap size according to 
+      // 3a. If MEMORY_GROWTH_LINEAR_STEP == -1, excessively resize the heap geometrically: increase the heap size according to
       //                                         MEMORY_GROWTH_GEOMETRIC_STEP factor (default +20%),
       //                                         At most overreserve by MEMORY_GROWTH_GEOMETRIC_CAP bytes (default 96MB).
       // 3b. If MEMORY_GROWTH_LINEAR_STEP != -1, excessively resize the heap linearly: increase the heap size by at least MEMORY_GROWTH_LINEAR_STEP bytes.
       // 4. Max size for the heap is capped at 2048MB-PAGE_MULTIPLE, or by MAXIMUM_MEMORY, or by ASAN limit, depending on which is smallest
       // 5. If we were unable to allocate as much memory, it may be due to over-eager decision to excessively reserve due to (3) above.
       //    Hence if an allocation fails, cut down on the amount of excess growth, in an attempt to succeed to perform a smaller allocation.
-  
+
       // A limit was set for how much we can grow. We should not exceed that
       // (the wasm binary specifies it, so if we tried, we'd fail anyhow).
       var maxHeapSize = 2147483648;
       if (requestedSize > maxHeapSize) {
         return false;
       }
-  
+
       var minHeapSize = 16777216;
-  
+
       // Loop through potential heap size increases. If we attempt a too eager reservation that fails, cut down on the
       // attempted size and reserve a smaller bump instead. (max 3 times, chosen somewhat arbitrarily)
       for(var cutDown = 1; cutDown <= 4; cutDown *= 2) {
         var overGrownHeapSize = oldSize * (1 + 0.2 / cutDown); // ensure geometric growth
         // but limit overreserving (default to capping at +96MB overgrowth at most)
         overGrownHeapSize = Math.min(overGrownHeapSize, requestedSize + 100663296 );
-  
-  
+
+
         var newSize = Math.min(maxHeapSize, alignUp(Math.max(minHeapSize, requestedSize, overGrownHeapSize), PAGE_MULTIPLE));
-  
+
         var replacement = emscripten_realloc_buffer(newSize);
         if (replacement) {
-  
+
           return true;
         }
       }
       return false;
     }
 
-  
-  
+
+
   var PATH={splitPath:function(filename) {
         var splitPathRe = /^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/;
         return splitPathRe.exec(filename).slice(1);
@@ -1941,7 +1941,7 @@ var ASM_CONSTS = {
   function _fd_seek(fd, offset_low, offset_high, whence, newOffset) {
   }
 
-  
+
   function flush_NO_FILESYSTEM() {
       // flush anything remaining in the buffers during shutdown
       if (typeof _fflush !== 'undefined') _fflush(0);
@@ -2485,14 +2485,14 @@ function reset() {
   leftchannel = [];
   rightchannel = [];
   denoisedchannel = [];
-  
+
   recorder = null;
   recordingLength = 0;
   volume = null;
   mediaStream = null;
   sampleRate = 44100;
   context = null;
-  
+
   blobIn = null;
   blobOut = null;
 }
@@ -2502,7 +2502,7 @@ function reset() {
  fileElem.addEventListener('change', readSingleFile, false);
     function readSingleFile(e) {
       const file = e.target.files[0];
-  
+
       if (!file) {
         return;
       }
@@ -2512,7 +2512,7 @@ function reset() {
       reader.onload = function(e) {
         contents = e.target.result;
         fileContents = contents;
-        
+
         // Use WebAudio
         var ac = new (AudioContext || webkitAudioContext)();
         ac.decodeAudioData(contents).then(function(buffer) {
@@ -2525,8 +2525,8 @@ function reset() {
 
           //Input files are used for perf assessment.
           denoisedchannel.push(wasm_denoise_stream_perf(audioBufferFromFile.getChannelData(0)));
-          // playF32Audio(buffer.getChannelData(0), 503784, 48000);     
-          
+          // playF32Audio(buffer.getChannelData(0), 503784, 48000);
+
 
           // console.log("Wasm Performance:");
           // console.log();
@@ -2543,7 +2543,7 @@ function reset() {
           lTimeIntervel.innerHTML = 'Wasm Time Elapsed (ms): '+wasm_processing_time+'<br>';
           lKbps.innerHTML = 'Kbps: '+sampleSize/wasm_processing_time+'<br>';
         })
-      };  
+      };
       // reader.readAsBinaryString(file);
       reader.readAsArrayBuffer(file);
 
@@ -2551,7 +2551,7 @@ function reset() {
 
 
 startRecordingButton.addEventListener("click", function () {
-  
+
   reset();
   lRecordingMsg.innerHTML='Recording in progress..';
 
@@ -2573,7 +2573,7 @@ startRecordingButton.addEventListener("click", function () {
       mediaStream = context.createMediaStreamSource(e);
 
       // onaudioprocess is triggered when bufferSize is full. Acceps power of two upto 16384.
-      var bufferSize = BUFF_SIZE; 
+      var bufferSize = BUFF_SIZE;
 
       //currently limited to single channel audio. Sterio is doable fairly easily.
       var numberOfInputChannels = 1;
@@ -2650,15 +2650,15 @@ function flattenArray(channelBuffer, recordingLength) {
 
 //Play raw f32Array audio using WebAudio
 function playF32Audio(f32buffer, inSize, inSampleRate) {
-  
+
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)({sampleRate: inSampleRate});
   var myArrayBuffer = audioCtx.createBuffer(1, inSize, inSampleRate);
-  
+
   myArrayBuffer.copyToChannel(f32buffer, 0,0);
 
   var source = audioCtx.createBufferSource();
   source.buffer = myArrayBuffer;
-  
+
   source.connect(audioCtx.destination);
   source.start();
 }
@@ -2686,7 +2686,7 @@ let wasm_freeBuffer = Module.cwrap('freeBuffer', '', []);
 //   let wasm_memp_in = Module._malloc(u8audiobuffer.length);
 //   let wasm_mem = new Uint8Array(wasmMemory.buffer, wasm_memp_in, u8audiobuffer.length);
 //   wasm_mem.set(u8audiobuffer);
-  
+
 //   //wasm call
 //   let x= wasm_rnnDenoiseMem(wasm_memp_in, u8audiobuffer.length);
 
@@ -2694,10 +2694,10 @@ let wasm_freeBuffer = Module.cwrap('freeBuffer', '', []);
 //   sampleRate = getsampleRate();
 
 //   let bProcessedArr = new Uint8Array(wasmMemory.buffer, x, u8audiobuffer.length);
-  
+
 //   var fProcessedArr = new Float32Array(getResultSize());
 //   fProcessedArr = new Float32Array(wasmMemory.buffer, x, getsampleCount());
-  
+
 //   //Test
 //   // playF32Audio(fProcessedArr, getResultSize(), getsampleRate());
 

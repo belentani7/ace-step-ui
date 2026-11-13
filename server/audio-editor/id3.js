@@ -86,7 +86,7 @@
                 var byte1 = bytes[i++];
                 if( byte1 == 0x00 ) break;
                 arr[i-1] = String.fromCharCode(byte1);
-            }       
+            }
             var string = new String(arr.join(""));
             string.bytesReadCount = i;
             return string;
@@ -784,7 +784,7 @@
             {
                 seek += 4; // next_item_id (uint32)
                 readAtom(tag, data, seek + 8, atomSize - 8, indent);
-                return; 
+                return;
             }
             if (atomName === 'moov' || atomName === 'udta' || atomName === 'ilst' ) // ['moov', 'udta', 'meta', 'ilst'].indexOf(atomName) > -1)
             {

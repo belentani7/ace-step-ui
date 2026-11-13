@@ -11,9 +11,9 @@ interface VideoGeneratorModalProps {
   song: Song | null;
 }
 
-type PresetType = 
-  | 'NCS Circle' | 'Linear Bars' | 'Dual Mirror' | 'Center Wave' 
-  | 'Orbital' | 'Digital Rain' | 'Hexagon' | 'Shockwave' 
+type PresetType =
+  | 'NCS Circle' | 'Linear Bars' | 'Dual Mirror' | 'Center Wave'
+  | 'Orbital' | 'Digital Rain' | 'Hexagon' | 'Shockwave'
   | 'Oscilloscope' | 'Minimal';
 
 interface VisualizerConfig {
@@ -142,7 +142,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
   const [pexelsApiKey, setPexelsApiKey] = useState<string>(() => localStorage.getItem('pexels_api_key') || '');
   const [showPexelsApiKeyInput, setShowPexelsApiKeyInput] = useState(false);
   const [pexelsError, setPexelsError] = useState<string | null>(null);
-  
+
   const [isExporting, setIsExporting] = useState(false);
   const [exportProgress, setExportProgress] = useState(0);
   const [exportStage, setExportStage] = useState<'idle' | 'capturing' | 'encoding'>('idle');
@@ -379,7 +379,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
       }
       cancelAnimationFrame(animationRef.current);
     };
-  }, [isOpen, song]); 
+  }, [isOpen, song]);
 
   const togglePlay = async () => {
     if (!audioRef.current || !audioContextRef.current) return;
@@ -1107,7 +1107,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
 
     // --- 2. PRESET DRAWING ---
     ctx.save();
-    
+
     // Apply Shake to visual elements
     if (currentEffects.shake && normBass > 0.6) {
          const magnitude = currentIntensities.shake * 30;
@@ -1145,7 +1145,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
              drawShockwave(ctx, centerX, centerY, bass, time, currentConfig.primaryColor);
              break;
     }
-    
+
     drawParticles(ctx, width, height, time, bass, currentConfig.particleCount, currentConfig.primaryColor);
 
     if (['NCS Circle', 'Hexagon', 'Orbital', 'Shockwave'].includes(currentConfig.preset)) {
@@ -1183,17 +1183,17 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
         // Adjust font size by pulse for title-like layers if needed, here we do static or slight pulse
         const dynamicSize = layer.id === '1' && currentConfig.preset === 'Minimal' ? layer.size * pulse : layer.size;
         ctx.font = `bold ${dynamicSize}px ${layer.font}, sans-serif`;
-        
+
         const xPos = (layer.x / 100) * width;
         const yPos = (layer.y / 100) * height;
-        
+
         ctx.fillText(layer.text, xPos, yPos);
     });
 
     ctx.restore();
 
     // --- 4. POST-PROCESSING EFFECTS ---
-    
+
     // Scanlines
     if (currentEffects.scanlines || currentEffects.cctv) {
         ctx.fillStyle = `rgba(0,0,0,${currentIntensities.scanlines * 0.8})`;
@@ -1224,9 +1224,9 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
         const sliceHeight = Math.random() * 50;
         const sliceY = Math.random() * height;
         const offset = (Math.random() - 0.5) * 40 * currentIntensities.glitch;
-        
+
         ctx.drawImage(canvas, 0, sliceY, width, sliceHeight, offset, sliceY, width, sliceHeight);
-        
+
         // Random colored block
         ctx.fillStyle = Math.random() > 0.5 ? currentConfig.primaryColor : '#fff';
         ctx.fillRect(Math.random()*width, Math.random()*height, Math.random()*200, 4);
@@ -1467,7 +1467,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
       ctx.lineTo(w, h/2);
       ctx.stroke();
   };
-  
+
   const drawCenterWave = (ctx: CanvasRenderingContext2D, cx: number, cy: number, data: Uint8Array, time: number, color: string) => {
       ctx.strokeStyle = color;
       ctx.lineWidth = 2;
@@ -1762,7 +1762,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
                     { id: 'text', label: 'Text', icon: <Type size={14} /> },
                     { id: 'effects', label: 'FX', icon: <Zap size={14} /> }
                 ].map(tab => (
-                    <button 
+                    <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
                         className={`flex-1 flex items-center justify-center gap-2 py-3 text-xs font-bold uppercase tracking-wider transition-colors ${activeTab === tab.id ? 'text-white border-b-2 border-pink-500 bg-white/5' : 'text-zinc-500 hover:text-zinc-300'}`}
@@ -1774,7 +1774,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
 
             {/* Content Area */}
             <div className="flex-1 overflow-y-auto custom-scrollbar p-4 md:p-6 space-y-4 md:space-y-6">
-                
+
                 {/* PRESETS TAB */}
                 {activeTab === 'presets' && (
                     <div className="grid grid-cols-2 gap-3">
@@ -1964,7 +1964,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
                                  </div>
                              </div>
                          </div>
-                         
+
                          {/* Particles */}
                          <div className="space-y-3">
                             <div className="flex justify-between text-xs font-bold text-zinc-500 uppercase">
@@ -2032,13 +2032,13 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
                 {/* TEXT TAB */}
                 {activeTab === 'text' && (
                     <div className="space-y-4">
-                        <button 
+                        <button
                             onClick={addTextLayer}
                             className="w-full py-2 bg-pink-600 text-white rounded-lg flex items-center justify-center gap-2 text-xs font-bold hover:bg-pink-700"
                         >
                             <Plus size={14} /> Add Text Layer
                         </button>
-                        
+
                         <div className="space-y-3">
                             {textLayers.map((layer, index) => (
                                 <div key={layer.id} className="bg-black/20 p-3 rounded-lg border border-white/5 space-y-3">
@@ -2048,9 +2048,9 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
                                             <Trash2 size={14} />
                                         </button>
                                     </div>
-                                    <input 
-                                        type="text" 
-                                        value={layer.text} 
+                                    <input
+                                        type="text"
+                                        value={layer.text}
                                         onChange={(e) => updateTextLayer(layer.id, { text: e.target.value })}
                                         className="w-full bg-zinc-800 rounded px-2 py-1 text-xs text-white border border-white/5"
                                         placeholder="Text content"
@@ -2105,7 +2105,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
 
                              return (
                                 <div key={effect.id} className={`rounded-lg border transition-all ${isActive ? 'bg-pink-600/10 border-pink-500/30' : 'bg-black/20 border-white/5'}`}>
-                                     <button 
+                                     <button
                                         onClick={() => setEffects(prev => ({ ...prev, [effectId]: !prev[effectId] }))}
                                         className="w-full flex items-center justify-between p-3"
                                     >
@@ -2120,7 +2120,7 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
                                         </div>
                                         <div className={`w-3 h-3 rounded-full ${isActive ? 'bg-pink-500 shadow-[0_0_8px_rgba(236,72,153,0.8)]' : 'bg-zinc-700'}`}></div>
                                     </button>
-                                    
+
                                     {/* Intensity Slider */}
                                     {isActive && (
                                         <div className="px-3 pb-3 pt-0 animate-in fade-in slide-in-from-top-2">
@@ -2128,8 +2128,8 @@ export const VideoGeneratorModal: React.FC<VideoGeneratorModalProps> = ({ isOpen
                                                 <span>Intensity</span>
                                                 <span>{Math.round(intensity * 100)}%</span>
                                             </div>
-                                            <input 
-                                                type="range" min="0" max="1" step="0.05" 
+                                            <input
+                                                type="range" min="0" max="1" step="0.05"
                                                 value={intensity}
                                                 onChange={(e) => setIntensities({...intensities, [effectId]: parseFloat(e.target.value)})}
                                                 className="w-full accent-pink-500 h-1 bg-zinc-700 rounded-lg appearance-none cursor-pointer"

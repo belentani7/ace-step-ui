@@ -1,6 +1,6 @@
 (function ( PKAE ) {
 	'use strict';
-	
+
 	function PKState ( _depth, app ) {
 		if (!_depth) _depth = 1;
 
@@ -38,14 +38,14 @@
 
 			_fireEvent ( 'StatePush', undo_state_list.length );
 			_fireEvent ( 'DidStateChange', undo_state_list, redo_state_list);
-			
+
 			return (true);
 		};
 
 		q.popUndoState = function () {
 			var last_state =undo_state_list.pop ();
 
-			if (last_state) {	
+			if (last_state) {
 				if (redo_state_list.length > 0)
 				{
 					if (redo_state_list[0].id !== last_state.id + 1)
@@ -54,8 +54,8 @@
 
 				var temp = app.engine.wavesurfer.backend.buffer;
 				_fireEvent ( 'StateDidPop', last_state, 1 );
-				
-				last_state.data = temp; 
+
+				last_state.data = temp;
 				redo_state_list.unshift (last_state);
 
 				_fireEvent ( 'DidStateChange', undo_state_list, redo_state_list);
@@ -63,10 +63,10 @@
 
 			return (last_state);
 		};
-		
+
 		q.shiftRedoState = function () {
 			var last_state = redo_state_list.shift ();
-			
+
 			if (last_state) {
 				if (undo_state_list.length > 0)
 				{
@@ -77,15 +77,15 @@
 				var temp = app.engine.wavesurfer.backend.buffer;
 				_fireEvent ( 'StateDidPop', last_state, 0 );
 
-				last_state.data = temp; 
+				last_state.data = temp;
 				undo_state_list.push (last_state);
 
 				_fireEvent ( 'DidStateChange', undo_state_list, redo_state_list);
 			}
-			
+
 			return (last_state);
 		};
-		
+
 		q.clearAllState = function () {
 			undo_state_list = [];
 			redo_state_list = [];
@@ -111,7 +111,7 @@
 		});
 		// -
 	};
-	
+
 	PKAE._deps.state = PKState;
-	
+
 })( PKAudioEditor );

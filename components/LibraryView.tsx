@@ -33,12 +33,12 @@ interface ReferenceTrack {
     audio_url: string;
 }
 
-export const LibraryView: React.FC<LibraryViewProps> = ({ 
+export const LibraryView: React.FC<LibraryViewProps> = ({
     allSongs,
-    likedSongs, 
-    playlists, 
+    likedSongs,
+    playlists,
     referenceTracks,
-    onPlaySong, 
+    onPlaySong,
     onCreatePlaylist,
     onSelectPlaylist,
     onAddToPlaylist,
@@ -70,7 +70,7 @@ export const LibraryView: React.FC<LibraryViewProps> = ({
         <div className="flex-1 bg-white dark:bg-black overflow-y-auto custom-scrollbar p-6 lg:p-10 pb-32 transition-colors duration-300">
              <div className="flex items-center justify-between mb-8">
                 <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">{t('yourLibrary')}</h1>
-                <button 
+                <button
                     onClick={onCreatePlaylist}
                     className="flex items-center gap-2 bg-zinc-900 dark:bg-zinc-800 hover:bg-zinc-800 dark:hover:bg-zinc-700 text-white px-4 py-2 rounded-full font-medium transition-colors shadow-lg shadow-zinc-900/10 dark:shadow-none"
                 >
@@ -81,28 +81,28 @@ export const LibraryView: React.FC<LibraryViewProps> = ({
 
              {/* Tabs */}
              <div className="flex items-center gap-4 mb-8 border-b border-zinc-200 dark:border-white/10 pb-1">
-                 <button 
+                 <button
                     onClick={() => setActiveTab('all')}
                     className={`pb-3 text-sm font-bold transition-colors relative ${activeTab === 'all' ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-white'}`}
                  >
                     All Songs
                     {activeTab === 'all' && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-green-500 rounded-full"></div>}
                  </button>
-                 <button 
+                 <button
                     onClick={() => setActiveTab('liked')}
                     className={`pb-3 text-sm font-bold transition-colors relative ${activeTab === 'liked' ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-white'}`}
                  >
                     {t('likedSongs')}
                     {activeTab === 'liked' && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-green-500 rounded-full"></div>}
                  </button>
-                 <button 
+                 <button
                     onClick={() => setActiveTab('playlists')}
                     className={`pb-3 text-sm font-bold transition-colors relative ${activeTab === 'playlists' ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-white'}`}
                  >
                     {t('playlists')}
                     {activeTab === 'playlists' && <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-green-500 rounded-full"></div>}
                  </button>
-                 <button 
+                 <button
                     onClick={() => setActiveTab('uploads')}
                     className={`pb-3 text-sm font-bold transition-colors relative ${activeTab === 'uploads' ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-white'}`}
                  >
@@ -121,18 +121,18 @@ export const LibraryView: React.FC<LibraryViewProps> = ({
                             <div key={song.id} className="group flex items-center gap-4 p-2 rounded hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors" onClick={() => onPlaySong(song, allSongs)}>
                                 <span className="text-zinc-400 dark:text-zinc-500 w-6 text-center group-hover:hidden">{idx + 1}</span>
                                 <span className="text-zinc-900 dark:text-white w-6 text-center hidden group-hover:block"><Play size={14} fill="currentColor" /></span>
-                                
+
                                 {song.coverUrl ? (
                                     <img src={song.coverUrl} className="w-10 h-10 rounded object-cover shadow-sm" alt="" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                                 ) : (
                                     <AlbumCover seed={song.id || song.title} size="sm" className="w-10 h-10" />
                                 )}
-                                
+
                                 <div className="flex-1 min-w-0">
                                     <div className="text-zinc-900 dark:text-white font-medium truncate">{song.title}</div>
                                     <div className="text-zinc-500 dark:text-zinc-400 text-xs">{song.style}</div>
                                 </div>
-                                
+
                                 <div className="text-zinc-500 dark:text-zinc-400 text-sm font-mono">{song.duration}</div>
                                 <div className="relative ml-2">
                                     <button
@@ -188,18 +188,18 @@ export const LibraryView: React.FC<LibraryViewProps> = ({
                             <div key={song.id} className="group flex items-center gap-4 p-2 rounded hover:bg-zinc-100 dark:hover:bg-white/10 transition-colors" onClick={() => onPlaySong(song, likedSongs)}>
                                 <span className="text-zinc-400 dark:text-zinc-500 w-6 text-center group-hover:hidden">{idx + 1}</span>
                                 <span className="text-zinc-900 dark:text-white w-6 text-center hidden group-hover:block"><Play size={14} fill="currentColor" /></span>
-                                
+
                                 {song.coverUrl ? (
                                     <img src={song.coverUrl} className="w-10 h-10 rounded object-cover shadow-sm" alt="" onError={(e) => { e.currentTarget.style.display = 'none'; }} />
                                 ) : (
                                     <AlbumCover seed={song.id || song.title} size="sm" className="w-10 h-10" />
                                 )}
-                                
+
                                 <div className="flex-1 min-w-0">
                                     <div className="text-zinc-900 dark:text-white font-medium truncate">{song.title}</div>
                                     <div className="text-zinc-500 dark:text-zinc-400 text-xs">{song.style}</div>
                                 </div>
-                                
+
                                 <div className="text-zinc-500 dark:text-zinc-400 text-sm font-mono">{song.duration}</div>
                                 <div className="text-green-500"><Heart fill="#22c55e" size={16} /></div>
                                 <div className="relative ml-2">

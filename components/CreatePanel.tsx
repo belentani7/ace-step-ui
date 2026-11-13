@@ -233,7 +233,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
   const [showModelMenu, setShowModelMenu] = useState(false);
   const modelMenuRef = useRef<HTMLDivElement>(null);
   const previousModelRef = useRef<string>(selectedModel);
-  
+
   // Available models fetched from backend
   const [fetchedModels, setFetchedModels] = useState<{ name: string; is_active: boolean; is_preloaded: boolean }[]>([]);
 
@@ -402,7 +402,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
 
   const handleLoraUnload = async () => {
     if (!token) return;
-    
+
     setIsLoraLoading(true);
     setLoraError(null);
 
@@ -512,12 +512,12 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
       if (!isResizing) return;
 
       // Calculate new height based on mouse position relative to the lyrics container top
-      // We can't easily get the container top here without a ref to it, 
+      // We can't easily get the container top here without a ref to it,
       // but we can use dy (delta y) from the previous position if we tracked it,
       // OR simpler: just update based on movement if we track the start.
       //
-      // Better approach for absolute sizing: 
-      // 1. Get the bounding rect of the textarea wrapper on mount/resize start? 
+      // Better approach for absolute sizing:
+      // 1. Get the bounding rect of the textarea wrapper on mount/resize start?
       //    We can just rely on the fact that we are dragging the bottom.
       //    So new height = currentMouseY - topOfElement.
 
@@ -1154,7 +1154,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
                 {availableModels.length === 0 ? '...' : getModelDisplayName(selectedModel)}
                 <ChevronDown size={10} className="text-zinc-600 dark:text-zinc-400" />
               </button>
-              
+
               {/* Floating Model Menu */}
               {showModelMenu && availableModels.length > 0 && (
                 <div className="absolute top-full right-0 mt-1 w-72 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-xl shadow-2xl z-50 overflow-hidden">
@@ -2776,7 +2776,7 @@ export const CreatePanel: React.FC<CreatePanelProps> = ({
         >
           <Sparkles size={18} />
           <span>
-            {isGenerating 
+            {isGenerating
               ? t('generating')
               : bulkCount > 1
                 ? `${t('createButton')} ${bulkCount} ${t('jobs')} (${bulkCount * batchSize} ${t('variations')})`

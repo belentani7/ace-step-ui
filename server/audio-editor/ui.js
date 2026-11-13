@@ -1,7 +1,7 @@
 (function ( w, d, PKAE ) {
 	'use strict';
 
-	// 
+	//
 	// MAIN UI CLASS
 	var PKUI = function( app ) {
 		var q = this;
@@ -10,7 +10,7 @@
 
 		// if mobile add proper class
 		this.el.className += ' pk_app' + (app.isMobile ? ' pk_mob' : '');
-		
+
 		// hold refferences to the event functions
 		this.fireEvent = app.fireEvent;
 		this.listenFor = app.listenFor;
@@ -145,12 +145,12 @@
 										callback: function( q ) {
 											var input = q.el_body.getElementsByTagName('input')[0];
 											var value = input.value.trim();
-											
+
 											var format = 'mp3';
 											var kbps = 128;
 											var export_sel = false;
 											var stereo     = false;
-											
+
 											var radios = q.el_body.getElementsByClassName ('pk_check');
 											var l = radios.length;
 											while (l-- > 0) {
@@ -194,20 +194,20 @@
 										}
 									}
 								  ],
-								  body:'<div class="pk_row"><label for="k0">File Name</label>' + 
+								  body:'<div class="pk_row"><label for="k0">File Name</label>' +
 									'<input style="min-width:250px" placeholder="mp3 filename" value="audiomass-output.mp3" ' +
 									'class="pk_txt" type="text" id="k0" /></div>'+
 
 									'<div class="pk_row" id="frmtex" style="padding-bottom:4px"><label style="display:inline">Format</label>'+
 									'<input type="radio" class="pk_check" id="k01" name="frmtex" checked value="mp3">'+
 									'<label for="k01">mp3</label>' +
-									'<input type="radio" class="pk_check" id="k02" name="frmtex" value="wav">'+  
+									'<input type="radio" class="pk_check" id="k02" name="frmtex" value="wav">'+
 									'<label for="k02">wav <i>(44100hz)</i></label>' +
-									'<input type="radio" class="pk_check" id="k03" name="frmtex" value="flac">'+  
+									'<input type="radio" class="pk_check" id="k03" name="frmtex" value="flac">'+
 									'<label for="k03">flac</i></label>' +
 									'</div>' +
 
-									'<div class="pk_row" id="frmtex-mp3"><input type="radio" class="pk_check" id="k1" name="rdslnc" checked value="128">'+ 
+									'<div class="pk_row" id="frmtex-mp3"><input type="radio" class="pk_check" id="k1" name="rdslnc" checked value="128">'+
 									'<label  for="k1">128kbps</label>' +
 									'<input type="radio" class="pk_check"  id="k2" name="rdslnc" value="192">'+
 									'<label for="k2">192kbps</label>'+
@@ -225,12 +225,12 @@
 									'<input type="radio" class="pk_check pk_stereo" id="k7" name="chnl" value="stereo">'+
 									'<label for="k7">Stereo</label>'+
 									'</div>'+
-									'<div class="pk_row">' + 
+									'<div class="pk_row">' +
 									'<input type="radio" class="pk_check" id="k4" name="xport" checked value="whole">'+
 									'<label for="k4">Export whole file</label>'+
 									'<input type="radio" class="pk_check" id="k5" name="xport" value="sel">'+
 									'<label class="pk_lblmp3" for="k5">Export Selection Only</label></div>',
-									
+
 								  setup:function( q ) {
 								  		var wv = PKAudioEditor.engine.wavesurfer;
 								  		//console.log( document.getElementById('frmtex') );
@@ -318,26 +318,26 @@
 							app.fireEvent ('RequestLoadLocalFile');
 						}
 					},
-					
+
 					{
 						name: 'Load Sample File',
 						action: function ( e ) {
 							app.engine.LoadSample ();
-						}	
+						}
 					},
-					
+
 					{
 						name: 'Load From URL',
 						action: function ( e ) {
 								new PKSimpleModal({
 								  title:'Load audio from remote url',
-								  
+
 								  ondestroy: function( q ) {
 									app.ui.InteractionHandler.on = false;
 									app.ui.KeyHandler.removeCallback ('modalTemp');
 									app.ui.KeyHandler.removeCallback ('modalTempEnter');
 								  },
-								  
+
 								  buttons:[
 									{
 										title:'Load Asset',
@@ -360,7 +360,7 @@
 											        return true;
 											    }
 											};
-											
+
 											if (isURL (value))
 											{
 												// LOAD FROM URL....
@@ -375,7 +375,7 @@
 										}
 									}
 								  ],
-								  body:'<label for="k00">Insert url</label>' + 
+								  body:'<label for="k00">Insert url</label>' +
 									'<input style="min-width:250px" placeholder="Please insert url" class="pk_txt" type="text" id="k00" />',
 								  setup:function( q ) {
 
@@ -417,7 +417,7 @@
 								if (type === 'copy') buff = app.engine.GetCopyBuff ();
 								else if (type === 'sel') buff = app.engine.GetSel ();
 
-								var func = function ( fls ) {								
+								var func = function ( fls ) {
 									var rr = Math.random().toString(36).substring(7);
 
 									fls.SaveSession (buff, rr, name);
@@ -472,7 +472,7 @@
 								],
 
 								body:'<p>Please choose source...</p>' +
-									'<div class="pk_row"><input type="radio" class="pk_check" id="sl1" name="rdslnc" checked value="whole">'+ 
+									'<div class="pk_row"><input type="radio" class="pk_check" id="sl1" name="rdslnc" checked value="whole">'+
 									'<label style="vertical-align:top" for="sl1">Whole Track</label>' +
 									'<input type="radio" class="pk_check"  id="sl2" name="rdslnc" value="sel">'+
 									'<label style="vertical-align:top" class="pk_lblsel" for="sl2">Selection'+
@@ -480,7 +480,7 @@
 									'<input type="radio" class="pk_check"  id="sl3" name="rdslnc" value="copy">'+
 									'<label style="vertical-align:top" class="pk_lblsel2" for="sl3">"Copy" clipboard/buffer</label></div>'+
 
-									'<div class="pk_row"><label for="slk0">Draft Name</label>' + 
+									'<div class="pk_row"><label for="slk0">Draft Name</label>' +
 									'<input style="min-width:250px" placeholder="(optional) filename" maxlength="100" ' +
 									'class="pk_txt" type="text" id="slk0" /></div>',
 
@@ -571,7 +571,7 @@
 										}
 									}).Show ();
 							});
-						}	
+						}
 					},
 
 					{
@@ -587,7 +587,7 @@
 							    if (86400 <= a && 2592030 >= a) return a = Math.floor(a / 86400), a + ' day' + (1 < a ? 's' : '') + ' ago';
 							    if (2592031 <= a) return a = Math.floor(a / 2592E3), a + ' month' + (1 < a ? 's' : '') + ' ago';
 							};
-							var func = function ( fls ) {								
+							var func = function ( fls ) {
 								fls.ListSessions(function( ret ) {
 
 									var msg = '';
@@ -600,11 +600,11 @@
 										{
 											var curr = ret[i];
 											var date = new Date(curr.created);
-											var datestr =  (date.getMonth()+1) + '/' + 
-															date.getDate() + '/' + 
-															date.getFullYear() + "  " + 
-															date.getHours() + ":" + 
-															date.getMinutes() + ":" + 
+											var datestr =  (date.getMonth()+1) + '/' +
+															date.getDate() + '/' +
+															date.getFullYear() + "  " +
+															date.getHours() + ":" +
+															date.getMinutes() + ":" +
 															date.getSeconds();
 											var agostr = time_ago (date);
 											var filename = curr.name || '-';
@@ -614,7 +614,7 @@
 
 											msg += '<div id="pk_' + curr.id + '" class="pk_lcldrf">'+
 											'<div style="padding-bottom:2px"><span><i class="pk_i">name:</i>' + filename + '</span></div>' +
-											'<div><span class="pk_lcls"><i class="pk_i">id:</i><strong>' + curr.id + '</strong><br/><i class="pk_i">chn:</i>'+ chns +'</span>' + 
+											'<div><span class="pk_lcls"><i class="pk_i">id:</i><strong>' + curr.id + '</strong><br/><i class="pk_i">chn:</i>'+ chns +'</span>' +
 											'<span class="pk_lcls" style="width:50%;text-align:center"><i class="pk_i">date:</i><span>' + datestr + '<br/>'+ agostr +'</span></span>' +
 											'<span style="text-align:right;float:right" class="pk_lcls"><i class="pk_i">durr:</i>' + duration + 's</span></div><div>' +
 
@@ -886,7 +886,7 @@
 							});
 						}
 					},
-					
+
 					{
 						name: 'Redo <span class="pk_shrtct">Shft+Y</span>',
 						clss: 'pk_inact',
@@ -915,21 +915,21 @@
 							app.fireEvent ('RequestPlay');
 						}
 					},
-					
+
 					{
 						name: 'Stop',
 						action: function () {
 							app.fireEvent ('RequestStop');
 						}
 					},
-					
+
 					{
 						name: 'Select All <span class="pk_shrtct">Shft+A</span>',
 						action: function () {
 							app.fireEvent ('RequestSelect');
 						}
 					},
-					
+
 					{
 						name: 'Deselect All <span class="pk_shrtct">~</span>',
 						action: function () {
@@ -1070,7 +1070,7 @@
 							app.fireEvent ('RequestActionFX_Reverse');
 						}
 					},
-					
+
 					{
 						name   : 'Invert',
 						action : function () {
@@ -1084,7 +1084,7 @@
 							app.fireEvent ('RequestActionFX_RemSil');
 						}
 					}
-					
+
 				]
 			},
 			{
@@ -1327,9 +1327,9 @@
 		];
 	};
 
-	// 
+	//
 	// TOP-BAR CLASS
-	// 
+	//
 	function _makeUITopHeader ( menu_tree, UI ) {
 		var header = d.createElement ( 'div' );
 		header.className = 'pk_hdr pk_noselect';
@@ -1350,7 +1350,7 @@
 			{
 				var btn_container = d.createElement ( 'div' );
 				var curr_obj = tree_obj[i];
-				
+
 				if (level === 0)
 				{
 					btn_container.className = _default_class;
@@ -1385,7 +1385,7 @@
 					}
 				}
 				parent_el.appendChild ( btn_container );
-				
+
 				if (level === 0)
 					top_els[i] = btn_container.childNodes[0];
 
@@ -1394,15 +1394,15 @@
 					var ch = curr_obj.children;
 					var list = d.createElement('div');
 					list.className = 'pk_menu';
-					
+
 					build_menus ( list, curr_obj.children, level + 1 );
 					btn_container.appendChild ( list );
 				}
-				// --- 
+				// ---
 			}
 		};
 		build_menus ( header, menu_tree, 0 );
-		
+
 		this.getOpenElement = function () {
 			return target_el;
 		};
@@ -1417,10 +1417,10 @@
 				target_option.classList.remove ('pk_act');
 				target_option = null;
 			}
-			
+
 			UI.InteractionHandler.on = false;
 			d.removeEventListener ( 'mouseup', mouseup );
-			
+
 			// de-register keys
 			UI.KeyHandler.removeCallback (_name + 1);
 			UI.KeyHandler.removeCallback (_name + 2);
@@ -1429,7 +1429,7 @@
 			UI.KeyHandler.removeCallback (_name + 5);
 			UI.KeyHandler.removeCallback (_name + 6);
 		};
-		
+
 		this.openMenu = function ( index, is_mouse ) {
 			if (target_el) {
 				target_el.parentNode.className = _default_class;
@@ -1462,29 +1462,29 @@
 			},0);
 
 			target_index = index;
-			
+
 			UI.InteractionHandler.checkAndSet (_name);
-			
+
 			if (!is_mouse)
 				d.addEventListener ( 'mouseup', mouseup, false );
-			
+
 			// register keystrokes
 			UI.KeyHandler.addCallback (_name + 1, function ( key ) {
 				if (target_index === 0)
 					target_index = top_els.length;
-				
+
 				q.closeMenu ();
-				q.openMenu ( target_index - 1 );				
+				q.openMenu ( target_index - 1 );
 			}, [37]);
 			UI.KeyHandler.addCallback (_name + 2, function ( key ) {
 				if (target_index === top_els.length - 1)
 					target_index = -1;
 
 				q.closeMenu ();
-				q.openMenu ( target_index + 1 );				
+				q.openMenu ( target_index + 1 );
 			}, [39]);
 			UI.KeyHandler.addCallback (_name + 3, function ( key ) {
-				q.closeMenu ();			
+				q.closeMenu ();
 			}, [27]);
 			UI.KeyHandler.addCallback (_name + 4, function ( key, m, e ) {
 				if (!target_option)
@@ -1499,7 +1499,7 @@
 				{
 					var ind = target_option.getAttribute ('data-index')/1;
 					target_option.classList.remove ('pk_act');
-					
+
 					target_option = target_el.parentNode.getElementsByClassName ('pk_opt');
 					if (ind - 1 < 0)
 					{
@@ -1525,7 +1525,7 @@
 				{
 					var ind = target_option.getAttribute ('data-index')/1;
 					target_option.classList.remove ('pk_act');
-					
+
 					target_option = target_el.parentNode.getElementsByClassName ('pk_opt');
 					if (target_option.length <= ind + 1)
 					{
@@ -1535,7 +1535,7 @@
 					{
 						target_option = target_option[ind + 1];
 					}
-					target_option.classList.add ('pk_act');				
+					target_option.classList.add ('pk_act');
 				}
 			}, [40]);
 			UI.KeyHandler.addCallback (_name + 6, function ( key ) {
@@ -1552,7 +1552,7 @@
 			q.closeMenu ();
 		});
 
-		// register hot keys for opening the menu 
+		// register hot keys for opening the menu
 		function _checkForAct( x ) {
 				if (target_el == x || !x) return (false);
 
@@ -1563,10 +1563,10 @@
 					}
 					par = par.parentNode;
 				}
-				
+
 				var l = top_els.length;
 				while(l-- > 0) {
-					if (top_els[l] === x) {				
+					if (top_els[l] === x) {
 						return q.openMenu (l, true);
 					}
 				}
@@ -1582,7 +1582,7 @@
 			if (target_el || (UI.InteractionHandler.on && UI.InteractionHandler.by === _name) )
 			{
 				var x = e.target || e.srcElement;
-				
+
 				if (x.className.indexOf('pk_opt') >= 0)
 				{
 					if (target_option)
@@ -1628,7 +1628,7 @@
 				UI.InteractionHandler.on = false;
 				d.removeEventListener ( 'mouseup', mouseup );
 			}
-			
+
 			target_el_old = null;
 		};
 
@@ -1702,7 +1702,7 @@
 		main_audio_view.id = 'pk_av_' + app.id;
 		audio_container.appendChild( main_audio_view );
 
-		
+
 		var footer = d.createElement ( 'div' );
 		footer.className = 'pk_ftr pk_noselect';
 		UI.el.appendChild( footer );
@@ -1837,7 +1837,7 @@
 
 		footer.appendChild ( btn_zoom_cnt );
 		// end of zoom btns
-		
+
 		var wavezoom = d.createElement ( 'div' );
 		wavezoom.className = 'pk_wavescroll';
 
@@ -1872,7 +1872,7 @@
 			var x = e.clientX - rect.left;
 			UI.fireEvent ('RequestPan', x, 2);
 		};
-		
+
 		// add zoom event, and add seek event....
 		UI.listenFor ('DidZoom', function ( v ) {
 			var e = v[0];
@@ -1933,7 +1933,7 @@
 				//wavedrag_style.transform = 'translate(' + (val * zoom * 100) + '%,0)';
 			});
 		});
-		
+
 		var drag_mode = 0;
 		var startingX = 0;
 		var waveScrollMouseMove = function( e ) {
@@ -1958,7 +1958,7 @@
 			{
 				UI.fireEvent ('RequestZoom', diff, 1);
 			}
-			
+
 			startingX = clx;
 		},
 		waveScrollMouseUp = function ( e ) {
@@ -1968,9 +1968,9 @@
 			e.stopPropagation();e.preventDefault();
 			drag_mode = 0;
 			temp = window.performance.now();
-			
+
 			wavedrag.classList.remove ('pk_drag');
-			
+
 			document.removeEventListener('mousemove', waveScrollMouseMove);
 			document.removeEventListener('mouseup', waveScrollMouseUp);
 
@@ -1988,7 +1988,7 @@
 			} else if ( e.target === wavedrag_right) {
 				drag_mode = 1;
 			}
-			
+
 			wavedrag.className += ' pk_drag';
 
 			startingX = e.clientX;
@@ -2000,9 +2000,9 @@
 				document.addEventListener ('touchend', waveScrollMouseUp, false);
 			}
 			else
-			{		
+			{
 				document.addEventListener ('mousemove', waveScrollMouseMove, false);
-				document.addEventListener ('mouseup', waveScrollMouseUp, false);	
+				document.addEventListener ('mouseup', waveScrollMouseUp, false);
 			}
 		};
 
@@ -2025,45 +2025,45 @@
 				mdown ( ev );
 			}, false);
 		}
-		
-		
+
+
 		this.volumeGauge = d.createElement( 'div' );
 		this.volumeGauge2 = d.createElement( 'div' );
-		
+
 		this.volumeGaugeInner = d.createElement( 'div' );
 		this.volumeGaugeInner2 = d.createElement( 'div' );
 		this.volumeGaugePeaker = d.createElement( 'div' );
 		this.volumeGaugePeaker2 = d.createElement( 'div' );
 
 		var volume_parent = d.createElement('div');
-		
+
 		this.volumeGauge.className = 'pk_volpar';
 		this.volumeGauge2.className = 'pk_volpar';
 		this.volumeGaugeInner.className = 'pk_vol';
 		this.volumeGaugeInner2.className = 'pk_vol';
 		this.volumeGaugePeaker.className = 'pk_peaker';
 		this.volumeGaugePeaker2.className = 'pk_peaker';
-		
+
 		this.volumeGauge.appendChild ( this.volumeGaugeInner );
 		this.volumeGauge.appendChild( this.volumeGaugePeaker );
-		
+
 		this.volumeGauge2.appendChild ( this.volumeGaugeInner2 );
 		this.volumeGauge2.appendChild( this.volumeGaugePeaker2 );
-		
+
 		var markers = d.createElement('div');
 		markers.className = 'pk_markers pk_noselect';
-		
+
 		var str = '<span class="pk_mark1">-Inf</span>';
 		for (var i = 35; i >= 0; --i)
 		{
 			str += '<span class="pk_mark1 '+(i%2?'pk_odd':'')+'">' + -(i*2) + '</span>';
 		}
 		markers.innerHTML = str;
-		
+
 		volume_parent.appendChild( this.volumeGauge );
 		volume_parent.appendChild( this.volumeGauge2 );
 		volume_parent.appendChild( markers );
-		
+
 		volume_parent.onclick = function() {
 			q.volumeGaugePeaker.className = 'pk_peaker';
 			q.volumeGaugePeaker2.className = 'pk_peaker';
@@ -2081,8 +2081,8 @@
 
 		var ttmp2 = d.createElement('div');
 		ttmp2.className = 'pk_tmpMsg2';
-		ttmp2.innerHTML = '<span>Please Wait...</span><div class="pk_mload"><div></div></div>' + 
-			'<div class="pk_prc"><span>0%</span>' + 
+		ttmp2.innerHTML = '<span>Please Wait...</span><div class="pk_mload"><div></div></div>' +
+			'<div class="pk_prc"><span>0%</span>' +
 			'<button tabIndex="-1" class="pk_btn" '+
 			'onclick="PKAudioEditor.fireEvent(\'RequestCancelModal\');">cancel</button></div>';
 
@@ -2102,7 +2102,7 @@
 		});
 	}
 
-	
+
 	function _makeUIToolbar (UI) {
 		var container = d.createElement ( 'div' );
 		container.className = 'pk_tbc';
@@ -2112,7 +2112,7 @@
 
 		var btn_groups = d.createElement( 'div' );
 		btn_groups.className = 'pk_btngroup';
-		
+
 		var transport = d.createElement( 'div' );
 		transport.className = 'pk_transport';
 
@@ -2344,7 +2344,7 @@
 			// get zoom factor
 			var jump = 0.5;
 			var zoom = PKAudioEditor.engine.wavesurfer.ZoomFactor;
-			var total_dur = PKAudioEditor.engine.wavesurfer.getDuration ();			
+			var total_dur = PKAudioEditor.engine.wavesurfer.getDuration ();
 
 			jump = Math.max(total_dur / 200, 0.05);
 			jump /= zoom;
@@ -2374,7 +2374,7 @@
 
 			var jump = 0.5;
 			var zoom = PKAudioEditor.engine.wavesurfer.ZoomFactor;
-			var total_dur = PKAudioEditor.engine.wavesurfer.getDuration ();			
+			var total_dur = PKAudioEditor.engine.wavesurfer.getDuration ();
 
 			jump = Math.max(total_dur / 200, 0.05);
 
@@ -2401,14 +2401,14 @@
 				}
 
 				durr = region.start / total_dur;
-				
+
 				if (pos > (durr + 0.004))
 				{
 					UI.fireEvent( 'RequestSeekTo', durr );
 					return ;
 				}
 			}
-			
+
 			UI.fireEvent( 'RequestSeekTo', 0 );
 		}, [16, 37]);
 		UI.KeyHandler.addCallback ('KeyShiftArrowFront', function ( key ) {
@@ -2422,7 +2422,7 @@
 				var total_dur = PKAudioEditor.engine.wavesurfer.getDuration ();
 
 				var durr = region.start / total_dur;
-				
+
 				if (pos < (durr - 0.004))
 				{
 					UI.fireEvent( 'RequestSeekTo', durr );
@@ -2573,7 +2573,7 @@
 		total_duration.textContent = '00:00:000';
 		total_duration.className = 'pk_total_dur';
 		timing.appendChild( total_duration );
-		
+
 		var hover_duration = d.createElement( 'span' );
 		hover_duration.textContent = '00:00:000';
 		hover_duration.className = 'pk_hover_dur';
@@ -2584,14 +2584,14 @@
 				// do something smarter for f (event) ####
 				if (f)
 					hover_duration.textContent = formatTime (
-						PKAudioEditor.engine.wavesurfer.drawer.handleEvent(f) * 
-						PKAudioEditor.engine.wavesurfer.VisibleDuration + 
+						PKAudioEditor.engine.wavesurfer.drawer.handleEvent(f) *
+						PKAudioEditor.engine.wavesurfer.VisibleDuration +
 						PKAudioEditor.engine.wavesurfer.LeftProgress );
 			});
 
 			var old_refresh = 0;
 
-			var avv = d.getElementsByClassName('pk_av')[0]; 
+			var avv = d.getElementsByClassName('pk_av')[0];
 			avv.addEventListener ('mousemove', function ( e ) {
 				// re-run the mousemove fam on zoom based on the pointer position)
 
@@ -2605,8 +2605,8 @@
 				old_refresh = new_refresh;
 
 				hover_duration.textContent = formatTime (
-					PKAudioEditor.engine.wavesurfer.drawer.handleEvent( e ) * 
-					PKAudioEditor.engine.wavesurfer.VisibleDuration + 
+					PKAudioEditor.engine.wavesurfer.drawer.handleEvent( e ) *
+					PKAudioEditor.engine.wavesurfer.VisibleDuration +
 					PKAudioEditor.engine.wavesurfer.LeftProgress );
 			}, false);
 
@@ -2644,7 +2644,7 @@
 			main_context.addOption ('Insert Silence', function( e ) {
 				UI.fireEvent ('RequestFXUI_Silence', 0); // #### call effect
 			}, false );
-			// --- 
+			// ---
 
 
 			var copable = false;
@@ -2669,11 +2669,11 @@
 			};
 
 		}, 1000);
-		
+
 		UI.listenFor ('DidUpdateLen', function( val ) {
 			total_duration.textContent = formatTime (val);
 		});
-		
+
 		function formatTime( time ) {
 			var time_s = time >> 0;
 			var miliseconds = time - time_s;
@@ -2702,7 +2702,7 @@
 			return time_s + ':' + ((miliseconds*1000)>>0); // (miliseconds+'').substr(2, 3);
 		}
 		UI.formatTime = formatTime;
-		
+
 		var volume1 = 0;
 		var volume2 = 0;
 		var old_refresh = 0;
@@ -2750,7 +2750,7 @@
 					pk_timingnum = ttm;
 				}
 
-				
+
 				if (PKAudioEditor.engine.wavesurfer.ZoomFactor > 1)
 				{
 					var perc = time / PKAudioEditor.engine.wavesurfer.getDuration ();
@@ -2773,7 +2773,7 @@
 			}
 			else if (loudness[0] > 0) {
 				UI.footer.volumeGaugePeaker.className = 'pk_peaker pk_act';
-				
+
 				UI.footer.volumeGaugeInner.style.transform = 'translate3d(100%,0,0)';
 				// UI.footer.volumeGaugeInner.style.width = '0%';
 				volume1 = 100;
@@ -2781,7 +2781,7 @@
 				UI.footer.volumeGaugePeaker.setAttribute ('title', 'Peak at ' + PKAudioEditor.engine.wavesurfer.getCurrentTime().toFixed(2) );
 				if (loudness[1] > 0) {
 					UI.footer.volumeGaugePeaker2.className = 'pk_peaker pk_act';
-					
+
 					UI.footer.volumeGaugeInner2.style.transform = 'translate3d(100%,0,0)';
 					// UI.footer.volumeGaugeInner2.style.width = '0%';
 					volume2 = 100;
@@ -2791,7 +2791,7 @@
 			}
 			else if (loudness[1] > 0) {
 				UI.footer.volumeGaugePeaker2.className = 'pk_peaker pk_act';
-				
+
 				UI.footer.volumeGaugeInner2.style.transform = 'translate3d(100%,0,0)';
 				// UI.footer.volumeGaugeInner2.style.width = '0%';
 				volume2 = 100;
@@ -2822,11 +2822,11 @@
 				// UI.footer.volumeGaugeInner2.style.width = (100 - volume2) + '%';
 			}
 		});
-		
-		
+
+
 		var actions = d.createElement( 'div' );
 		actions.className = 'pk_ctns';
-		
+
 		var copy_btn = d.createElement ('button');
 		copy_btn.setAttribute('tabIndex', -1);
 		copy_btn.className = 'pk_btn icon-files-empty pk_inact';
@@ -2866,35 +2866,35 @@
 			UI.fireEvent( 'RequestActionCut', 1);
 			this.blur();
 		};
-		
+
 		var silence_btn = d.createElement ('button');
 		silence_btn.setAttribute('tabIndex', -1);
 		silence_btn.className = 'pk_btn icon-silence';
 		silence_btn.innerHTML = '<span>Insert Silence (Shift + N)</span>';
 		actions.appendChild ( silence_btn );
-		
+
 		UI.KeyHandler.addCallback ('KeyShiftN', function( k ) {
 			if (UI.InteractionHandler.on) return ;
-			
+
 			silence_btn.click ();
 		},[16, 78]);
 
 		silence_btn.onclick = function() {
-			UI.fireEvent( 'RequestFXUI_Silence');			
+			UI.fireEvent( 'RequestFXUI_Silence');
 			this.blur();
 		};
 
-		
-		
+
+
 		var selection = d.createElement( 'div' );
 		selection.className = 'pk_selection';
-		selection.innerHTML = '<div class="pk_sellist">' + 
-			'<span class="pk_title">Selection:</span>' + 
-			'<div><span class="title">Start:</span><span class="s_s pk_dat">-</span></div>' + 
-			'<div><span class="title">End:</span><span class="s_e pk_dat">-</span></div>' + 
+		selection.innerHTML = '<div class="pk_sellist">' +
+			'<span class="pk_title">Selection:</span>' +
+			'<div><span class="title">Start:</span><span class="s_s pk_dat">-</span></div>' +
+			'<div><span class="title">End:</span><span class="s_e pk_dat">-</span></div>' +
 			'<div><span  class="title">Duration:</span><span class="s_d pk_dat">-</span></div>' +
 		'</div>';
-		
+
 		var btn_clear_selection = d.createElement ('button');
 		btn_clear_selection.setAttribute('tabIndex', -1);
 		btn_clear_selection.className = 'pk_btn icon-clearsel pk_inact';
@@ -2905,7 +2905,7 @@
 			copy_btn.classList.remove ('pk_inact');
 			cut_btn.classList.remove ('pk_inact');
 			btn_clear_selection.classList.remove  ('pk_inact');
-			
+
 			if (region)
 			{
 				if (!sel_spans[0]) sel_spans = document.querySelectorAll('.pk_sellist .pk_dat');
@@ -2924,16 +2924,16 @@
 			sel_spans[1].textContent = '-';
 			sel_spans[2].textContent = '-';
 		});
-		
+
 		btn_clear_selection.onclick = function () {
 			UI.fireEvent( 'RequestRegionClear');
 			this.blur ();
 		};
 		selection.appendChild ( btn_clear_selection );
-		
+
 		toolbar.appendChild ( timing );
-		
-		
+
+
 		UI.listenFor ('DidChanToggle', function ( chan, val ) {
 			var region = PKAudioEditor.engine.wavesurfer.regions.list[0];
 			if (!region) return ;
@@ -3091,5 +3091,5 @@
 	// ---
 
 	PKAE._deps.ui = PKUI;
-	
+
 })( window, document, PKAudioEditor );

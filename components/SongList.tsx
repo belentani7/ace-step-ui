@@ -42,7 +42,7 @@ type FilterType = 'liked' | 'public' | 'private' | 'generating';
 // Map model ID to short display name
 const getModelDisplayName = (modelId?: string): string => {
     if (!modelId) return 'v1.5';
-    
+
     const mapping: Record<string, string> = {
         'acestep-v15-base': '1.5B',
         'acestep-v15-sft': '1.5S',

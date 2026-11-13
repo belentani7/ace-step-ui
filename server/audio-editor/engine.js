@@ -98,7 +98,7 @@
 
 			wavesurfer.backend._add = 0;
 			func();
-			// --- 
+			// ---
 		};
 
 		this.LoadDB = function (e) {
@@ -214,7 +214,7 @@
 					wavesurfer.backend._add = 0;
 					func();
 
-					// ----					
+					// ----
 				}
 			}
 		};
@@ -348,7 +348,7 @@
 						  final_data[curr_time + sample] = inputData[sample];
 
 						  // add noise to each output sample
-						  // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;         
+						  // outputData[sample] += ((Math.random() * 2) - 1) * 0.2;
 						}
 					  }
 				};
@@ -2536,7 +2536,7 @@
 		});
 
 
-		// --- 
+		// ---
 		app.listenFor('RequestChanToggle', function (chan_index, force_val) {
 			if (!q.is_ready) return (false);
 

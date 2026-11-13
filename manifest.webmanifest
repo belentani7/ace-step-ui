@@ -1,0 +1,17 @@
+{
+  "name": "ACE Step UI",
+  "short_name": "ACE Step UI",
+  "description": "fork de interfaz de generación musical",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0a12",
+  "theme_color": "#b99dff",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

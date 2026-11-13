@@ -179,7 +179,7 @@
 
 							for (var i = 0; i < record.data.length; ++i) {
 								tmp = comp.decompress (record.data[i], 0, record.data2[i]);
-								data_arr.push ( 
+								data_arr.push (
 									tmp.buffer.slice (tmp.byteOffset, tmp.byteLength + tmp.byteOffset)
 								);
 							}
@@ -198,7 +198,7 @@
 
 					for (var i = 0; i < record.data.length; ++i) {
 						tmp = comp.decompress (record.data[i], 0, record.data2[i]);
-						data_arr.push ( 
+						data_arr.push (
 							tmp.buffer.slice (tmp.byteOffset, tmp.byteLength + tmp.byteOffset)
 						);
 					}

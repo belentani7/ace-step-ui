@@ -1,9 +1,9 @@
 (function( w, d, PKAE ) {
 	'use strict';
-	
+
 	function KeyHandler () {
 		var q = this;
-		
+
 		q.keyMap          = {}; // holds a map of all the active keys
 		q.callbacks       = {}; // callbacks for when a key combintation becomes active
 		q.singleCallbacks = {}; // callbacks to the 'keypress' event - not required
@@ -23,7 +23,7 @@
 		q.removeCallback = function ( callback_name ) {
 			q.callbacks[ callback_name ] = null;
 		};
-		
+
 		d.addEventListener ('keydown', function ( e ) {
 			var keyCode = e.keyCode;
 
@@ -36,7 +36,7 @@
 			for (var key in q.callbacks) {
 				var group = q.callbacks[key];
 				if (!group) continue;
-				
+
 				var l = group.keys.length;
 				var all_ok = true;
 				while (l-- > 0) {
@@ -48,7 +48,7 @@
 				}
 
 				all_ok && group.callback && group.callback ( keyCode, q.keyMap, e );
-			}			
+			}
 		};
 
 		q.keyUp = function ( keyCode ) {
@@ -59,7 +59,7 @@
 			for (var key in q.singleCallbacks) {
 				var group = q.singleCallbacks[key];
 				if (!group) continue;
-				
+
 				if (group.key === keyCode)
 					group.callback && group.callback ( e );
 			}
@@ -83,7 +83,7 @@
 			e.preventDefault();
 		}, false);
 	};
-	
+
 	PKAE._deps.keyhandler = KeyHandler;
 
 })( window, document, PKAudioEditor  );
