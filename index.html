@@ -192,7 +192,7 @@ footer {
 
   <section class="hero">
     <div class="hero-canvas"></div>
-    <div class="hero-overlay">
+    <div class="hero-overlay" id="react-hero">
       <h1>Ace Step Ui</h1>
       <p>Producto completo con home hero, shader WebGL animado, y stack moderno listo para producción.</p>
       <div class="hero-actions">
@@ -365,5 +365,18 @@ footer {
   requestAnimationFrame(render);
 })();
 <!-- page-fix:1 -->
+<script type="application/json" id="hero-data">
+{
+  "eyebrow": "",
+  "title": "Ace Step Ui",
+  "subtitle": "Ace Step Ui Producto completo con home hero, shader WebGL animado, y stack moderno listo para producción.",
+  "install": "npm ci && npm run build",
+  "docsHref": "docs.html",
+  "repoHref": "https://github.com/belentani7/ace-step-ui",
+  "demoHref": "",
+  "chips": []
+}
+</script>
+<script src="site-hero.js" defer></script>
 </body>
 </html>
