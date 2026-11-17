@@ -687,3 +687,10 @@ MIT. Ver [`LICENSE`](LICENSE).
 ## Producto
 
 Oferta, precio y cobro: [`producto/OFERTA.md`](producto/OFERTA.md) · [`producto/precios.json`](producto/precios.json) · [`producto/landing.html`](producto/landing.html)
+
+## Verificacion
+
+```bash
+npm install
+npm test
+```
