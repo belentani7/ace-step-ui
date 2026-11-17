@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="audiomass.appcache">
+<html dir="ltr" lang="en" manifest="audiomass.appcache">
 <head>
 	<title>AudioMass - Audio Editor · Index cache</title>
 	<link href="ico.png" rel="shortcut icon">
@@ -31,6 +31,9 @@
 <meta name="color-scheme" content="light dark">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="es_ES">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=no">
 </head>
 <body>
 <main>
@@ -38,33 +41,33 @@
   <h1>AudioMass - Audio Editor</h1>
 	<div id="app"></div>
 
-	<script src="dist/wavesurfer.js"></script>
-	<script src="dist/plugin/wavesurfer.regions.js"></script>
-	<script src="oneup.js"></script>
+	<script src="dist/wavesurfer.js" defer></script>
+	<script src="dist/plugin/wavesurfer.regions.js" defer></script>
+	<script src="oneup.js" defer></script>
 
-	<script src="app.js"></script>
-	<script src="keys.js"></script>
-	<script src="contextmenu.js"></script>
-	<script src="ui-fx.js"></script>
-	<script src="ui.js"></script>
-	<script src="modal.js"></script>
-	<script src="state.js"></script>
-	<script src="engine.js"></script>
-	<script src="actions.js"></script>
-	<script src="drag.js"></script>
-	<script src="recorder.js"></script>
+	<script src="app.js" defer></script>
+	<script src="keys.js" defer></script>
+	<script src="contextmenu.js" defer></script>
+	<script src="ui-fx.js" defer></script>
+	<script src="ui.js" defer></script>
+	<script src="modal.js" defer></script>
+	<script src="state.js" defer></script>
+	<script src="engine.js" defer></script>
+	<script src="actions.js" defer></script>
+	<script src="drag.js" defer></script>
+	<script src="recorder.js" defer></script>
 
-	<script src="welcome.js"></script>
-	<script src="fx-pg-eq.js"></script>
-	<script src="fx-auto.js"></script>
-	<script src="local.js"></script>
-	<script src="id3.js"></script>
-	<script src="lzma.js"></script>
+	<script src="welcome.js" defer></script>
+	<script src="fx-pg-eq.js" defer></script>
+	<script src="fx-auto.js" defer></script>
+	<script src="local.js" defer></script>
+	<script src="id3.js" defer></script>
+	<script src="lzma.js" defer></script>
 
 
 <!--
-	<script src="multitrack.js"></script>
-	<script src="multitrack-ui.js"></script>
+	<script src="multitrack.js" defer></script>
+	<script src="multitrack-ui.js" defer></script>
 -->
 	<script>
 		var editor = PKAudioEditor.init ('app');
